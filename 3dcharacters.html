@@ -294,6 +294,195 @@ of the industry.">
     box-shadow: 0 14px 34px -10px rgba(255, 30, 30, 0.5) !important;
   }
 
+  
+  /* Lightbox Artwork Gallery */
+  .rm-gallery-modal {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 99999999 !important;
+    display: none !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-family: 'Space Mono', -apple-system, sans-serif !important;
+    box-sizing: border-box !important;
+    opacity: 0;
+    transition: opacity 0.25s ease !important;
+  }
+  .rm-gallery-modal.rm-active {
+    display: flex !important;
+    opacity: 1 !important;
+  }
+  .rm-gallery-backdrop {
+    position: absolute !important;
+    inset: 0 !important;
+    background: rgba(5, 5, 8, 0.94) !important;
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+  }
+  .rm-gallery-container {
+    position: relative !important;
+    z-index: 2 !important;
+    width: 100% !important;
+    max-width: 1300px !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 24px 20px !important;
+    box-sizing: border-box !important;
+  }
+  .rm-gallery-close {
+    position: absolute !important;
+    top: 24px !important;
+    right: 28px !important;
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 50% !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    background: rgba(20, 20, 20, 0.8) !important;
+    color: #ffffff !important;
+    font-size: 28px !important;
+    line-height: 1 !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s !important;
+    z-index: 10 !important;
+  }
+  .rm-gallery-close:hover {
+    background: rgba(255, 30, 30, 0.3) !important;
+    border-color: #ff1e1e !important;
+    transform: scale(1.08) !important;
+  }
+  .rm-gallery-nav {
+    position: absolute !important;
+    top: 48% !important;
+    transform: translateY(-50%) !important;
+    width: 52px !important;
+    height: 52px !important;
+    border-radius: 50% !important;
+    border: 1px solid rgba(255, 255, 255, 0.22) !important;
+    background: rgba(18, 18, 18, 0.85) !important;
+    color: #ffffff !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s !important;
+    z-index: 10 !important;
+  }
+  .rm-gallery-nav:hover {
+    background: rgba(255, 30, 30, 0.25) !important;
+    border-color: #ff1e1e !important;
+    box-shadow: 0 0 16px rgba(255, 30, 30, 0.5) !important;
+    transform: translateY(-50%) scale(1.08) !important;
+  }
+  .rm-gallery-prev {
+    left: 24px !important;
+  }
+  .rm-gallery-next {
+    right: 24px !important;
+  }
+  @media (max-width: 768px) {
+    .rm-gallery-nav {
+      width: 40px !important;
+      height: 40px !important;
+    }
+    .rm-gallery-prev { left: 10px !important; }
+    .rm-gallery-next { right: 10px !important; }
+  }
+  .rm-gallery-main-wrap {
+    flex: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    max-height: calc(100vh - 200px) !important;
+    overflow: hidden !important;
+  }
+  .rm-gallery-main-img {
+    max-width: 82vw !important;
+    max-height: calc(100vh - 220px) !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
+    border-radius: 6px !important;
+    box-shadow: 0 12px 50px rgba(0, 0, 0, 0.85) !important;
+    transition: opacity 0.2s ease, transform 0.2s ease !important;
+  }
+  .rm-gallery-counter {
+    margin: 12px 0 14px !important;
+    padding: 5px 16px !important;
+    border-radius: 20px !important;
+    background: rgba(255, 255, 255, 0.12) !important;
+    border: 1px solid rgba(255, 255, 255, 0.18) !important;
+    color: #efece4 !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.1em !important;
+    user-select: none !important;
+  }
+  .rm-gallery-thumbs-strip {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    width: 100% !important;
+    max-width: 900px !important;
+    height: 72px !important;
+    box-sizing: border-box !important;
+  }
+  .rm-thumb-item {
+    width: 80px !important;
+    height: 58px !important;
+    border-radius: 4px !important;
+    overflow: hidden !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    background: #111 !important;
+    cursor: pointer !important;
+    opacity: 0.55 !important;
+    transition: transform 0.2s, opacity 0.2s, border-color 0.2s, box-shadow 0.2s !important;
+    flex-shrink: 0 !important;
+  }
+  .rm-thumb-item:hover {
+    opacity: 0.85 !important;
+    border-color: rgba(255, 255, 255, 0.5) !important;
+    transform: translateY(-2px) !important;
+  }
+  .rm-thumb-item.rm-thumb-active {
+    opacity: 1 !important;
+    border: 2px solid #ff1e1e !important;
+    box-shadow: 0 0 14px rgba(255, 30, 30, 0.6) !important;
+    transform: scale(1.12) !important;
+  }
+  .rm-thumb-item img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+  }
+  @media (max-width: 640px) {
+    .rm-thumb-item {
+      width: 52px !important;
+      height: 42px !important;
+    }
+    .rm-gallery-thumbs-strip {
+      gap: 6px !important;
+    }
+  }
+
+  /* Artwork images cursor */
+  .rm-artwork-clickable {
+    cursor: zoom-in !important;
+    transition: transform 0.2s ease, filter 0.2s ease !important;
+  }
+  .rm-artwork-clickable:hover {
+    filter: brightness(1.08) !important;
+  }
+
   /* Universal RadMoon Footer */
   .rm-global-footer {
     padding: 48px 0 !important;
@@ -425,8 +614,286 @@ of the industry.">
   }
 </style>
 
-</head>
+<style>
+  
+</style><style>
+  
+</style><style>
+  /* Lightbox Artwork & Video Gallery - Perfect Fit Viewport System */
+  .rm-gallery-modal {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 99999999 !important;
+    display: none !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    font-family: 'Space Mono', monospace, -apple-system, sans-serif !important;
+    box-sizing: border-box !important;
+    opacity: 0;
+    transition: opacity 0.25s ease !important;
+  }
+  .rm-gallery-modal.rm-active {
+    display: flex !important;
+    opacity: 1 !important;
+  }
+  .rm-gallery-backdrop {
+    position: fixed !important;
+    inset: 0 !important;
+    background: rgba(5, 5, 8, 0.96) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    z-index: 1 !important;
+  }
+  .rm-gallery-close {
+    position: fixed !important;
+    top: 24px !important;
+    right: 32px !important;
+    width: 48px !important;
+    height: 48px !important;
+    border-radius: 50% !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    background: rgba(18, 18, 22, 0.9) !important;
+    color: #ffffff !important;
+    font-size: 28px !important;
+    line-height: 1 !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s !important;
+    z-index: 100000005 !important;
+  }
+  .rm-gallery-close:hover {
+    background: rgba(255, 30, 30, 0.35) !important;
+    border-color: #ff1e1e !important;
+    transform: scale(1.08) !important;
+  }
+  .rm-gallery-nav {
+    position: fixed !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 56px !important;
+    height: 56px !important;
+    border-radius: 50% !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    background: rgba(18, 18, 22, 0.9) !important;
+    color: #ffffff !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s !important;
+    z-index: 100000005 !important;
+  }
+  .rm-gallery-nav:hover {
+    background: rgba(255, 30, 30, 0.3) !important;
+    border-color: #ff1e1e !important;
+    box-shadow: 0 0 18px rgba(255, 30, 30, 0.6) !important;
+    transform: translateY(-50%) scale(1.08) !important;
+  }
+  .rm-gallery-prev {
+    left: 28px !important;
+  }
+  .rm-gallery-next {
+    right: 28px !important;
+  }
+  @media (max-width: 768px) {
+    .rm-gallery-nav {
+      width: 42px !important;
+      height: 42px !important;
+    }
+    .rm-gallery-prev { left: 12px !important; }
+    .rm-gallery-next { right: 12px !important; }
+    .rm-gallery-close { top: 16px !important; right: 16px !important; width: 40px !important; height: 40px !important; }
+  }
+
+  .rm-gallery-container {
+    position: relative !important;
+    z-index: 2 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: 100vw !important;
+    max-height: 100vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 24px 32px 16px !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+  .rm-gallery-main-wrap {
+    flex: 1 1 0% !important;
+    width: 100% !important;
+    max-width: calc(100vw - 180px) !important;
+    height: calc(100vh - 190px) !important;
+    max-height: calc(100vh - 190px) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+    margin: 0 auto !important;
+    overflow: visible !important;
+  }
+  @media (max-width: 768px) {
+    .rm-gallery-main-wrap {
+      max-width: 96vw !important;
+      height: calc(100vh - 170px) !important;
+      max-height: calc(100vh - 170px) !important;
+    }
+  }
+
+  /* Visibility control classes to strictly show only the active media type */
+  .rm-media-hidden {
+    display: none !important;
+  }
+  .rm-media-visible {
+    display: block !important;
+  }
+
+  .rm-gallery-main-img {
+    max-width: 100% !important;
+    max-height: 100% !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
+    border-radius: 6px !important;
+    box-shadow: 0 12px 50px rgba(0, 0, 0, 0.9) !important;
+    transition: opacity 0.2s ease !important;
+    margin: auto !important;
+  }
+  .rm-gallery-main-video {
+    max-width: 100% !important;
+    max-height: 100% !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
+    border-radius: 6px !important;
+    box-shadow: 0 12px 50px rgba(0, 0, 0, 0.9) !important;
+    background: #000000 !important;
+    margin: auto !important;
+  }
+  .rm-gallery-bottom-bar {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+    padding-top: 6px !important;
+  }
+  .rm-gallery-counter {
+    color: #efece4 !important;
+    font-size: 13px !important;
+    letter-spacing: 0.16em !important;
+    margin: 4px 0 8px !important;
+    text-transform: uppercase !important;
+    opacity: 0.9 !important;
+  }
+  .rm-gallery-thumbs-strip {
+    display: flex !important;
+    gap: 12px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    max-width: 90vw !important;
+    overflow-x: auto !important;
+    padding: 4px 8px 10px !important;
+    scrollbar-width: thin !important;
+    scrollbar-color: #ff1e1e rgba(255, 255, 255, 0.08) !important;
+  }
+  .rm-thumb-item {
+    position: relative !important;
+    width: 76px !important;
+    height: 54px !important;
+    border-radius: 4px !important;
+    overflow: hidden !important;
+    border: 2px solid transparent !important;
+    opacity: 0.42 !important;
+    cursor: pointer !important;
+    flex-shrink: 0 !important;
+    transition: opacity 0.2s ease, border-color 0.2s ease, transform 0.2s ease !important;
+    background: #141416 !important;
+  }
+  .rm-thumb-item:hover {
+    opacity: 0.85 !important;
+    transform: translateY(-2px) !important;
+  }
+  .rm-thumb-item.rm-thumb-active {
+    opacity: 1 !important;
+    border-color: #ff1e1e !important;
+    box-shadow: 0 0 14px rgba(255, 30, 30, 0.65) !important;
+    transform: scale(1.08) translateY(-2px) !important;
+  }
+  .rm-thumb-item img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+  }
+  .rm-thumb-video-wrap {
+    width: 100% !important;
+    height: 100% !important;
+    position: relative !important;
+    background: #0d0d0f !important;
+  }
+  .rm-thumb-video-wrap video {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+    pointer-events: none !important;
+  }
+  .rm-thumb-play-badge {
+    position: absolute !important;
+    inset: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: rgba(0, 0, 0, 0.3) !important;
+    pointer-events: none !important;
+  }
+  .rm-thumb-play-icon {
+    width: 20px !important;
+    height: 20px !important;
+    border-radius: 50% !important;
+    background: #ff1e1e !important;
+    color: #ffffff !important;
+    font-size: 9px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding-left: 2px !important;
+    box-shadow: 0 0 8px rgba(255, 30, 30, 0.8) !important;
+  }
+  @media (max-width: 640px) {
+    .rm-thumb-item {
+      width: 52px !important;
+      height: 40px !important;
+    }
+    .rm-gallery-thumbs-strip {
+      gap: 6px !important;
+    }
+  }
+
+  .rm-artwork-clickable {
+    cursor: zoom-in !important;
+    transition: transform 0.2s ease, filter 0.2s ease !important;
+  }
+  .rm-artwork-clickable:hover {
+    filter: brightness(1.08) !important;
+  }
+</style></head>
 <body>
+
+
+</div>
+
+
+
+
 
 <header class="rm-global-header">
   <div class="rm-nav-inner">
@@ -531,5 +998,332 @@ of the industry.">
       <div class="rm-footer-copy">2026 // © RadMoon Studios. All rights reserved.</div>
     </div>
   </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+<!-- LIGHTBOX ARTWORK & VIDEO GALLERY MODAL -->
+<div id="rmGalleryModal" class="rm-gallery-modal" aria-hidden="true">
+  <div class="rm-gallery-backdrop" id="rmGalleryBackdrop"></div>
+  
+  <!-- Fixed Viewport Controls (Anchored to screen edges, never overlapping artwork) -->
+  <button type="button" class="rm-gallery-close" id="rmGalleryClose" aria-label="Close Gallery">&times;</button>
+  <button type="button" class="rm-gallery-nav rm-gallery-prev" id="rmGalleryPrev" aria-label="Previous Item">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+  </button>
+  <button type="button" class="rm-gallery-nav rm-gallery-next" id="rmGalleryNext" aria-label="Next Item">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+  </button>
+
+  <div class="rm-gallery-container">
+    <div class="rm-gallery-main-wrap">
+      <img id="rmGalleryMainImg" src="" alt="Project Artwork" class="rm-gallery-main-img rm-media-hidden">
+      <video id="rmGalleryMainVideo" controls playsinline class="rm-gallery-main-video rm-media-hidden"></video>
+    </div>
+    <div class="rm-gallery-bottom-bar">
+      <div id="rmGalleryCounter" class="rm-gallery-counter">1 / 1</div>
+      <div id="rmGalleryThumbs" class="rm-gallery-thumbs-strip"></div>
+    </div>
+  </div>
+</div>
+
+
+<script id="rm-project-gallery-script">
+  document.addEventListener('DOMContentLoaded', () => {
+    // 1. Ensure all page videos are preloaded and playing
+    const pageVideos = Array.from(document.querySelectorAll('video'));
+    pageVideos.forEach(v => {
+      if (v.id === 'rmGalleryMainVideo') return;
+      v.muted = true;
+      v.defaultMuted = true;
+      v.playsInline = true;
+      v.loop = true;
+      v.preload = 'auto';
+      v.setAttribute('playsinline', '');
+      v.setAttribute('webkit-playsinline', '');
+      const p = v.play();
+      if (p !== undefined) {
+        p.catch(() => {
+          const resume = () => {
+            v.play().catch(() => {});
+            window.removeEventListener('scroll', resume);
+            window.removeEventListener('click', resume);
+            window.removeEventListener('touchstart', resume);
+          };
+          window.addEventListener('scroll', resume, { passive: true, once: true });
+          window.addEventListener('click', resume, { once: true });
+          window.addEventListener('touchstart', resume, { passive: true, once: true });
+        });
+      }
+    });
+
+    const modal = document.getElementById('rmGalleryModal');
+    const mainImg = document.getElementById('rmGalleryMainImg');
+    const mainVideo = document.getElementById('rmGalleryMainVideo');
+    const counter = document.getElementById('rmGalleryCounter');
+    const thumbsStrip = document.getElementById('rmGalleryThumbs');
+    const btnClose = document.getElementById('rmGalleryClose');
+    const btnBackdrop = document.getElementById('rmGalleryBackdrop');
+    const btnPrev = document.getElementById('rmGalleryPrev');
+    const btnNext = document.getElementById('rmGalleryNext');
+
+    if (!modal || !mainImg || !mainVideo) return;
+
+    // Helper: is element in header, footer, social, or "Related Projects" section?
+    function isExcluded(el) {
+      if (!el) return true;
+      if (
+        el.closest('.rm-global-header') ||
+        el.closest('.rm-global-footer') ||
+        el.closest('.rm-contact-section') ||
+        el.closest('#rmGalleryModal') ||
+        el.closest('.framer-DQB3F') ||
+        el.closest('.framer-CoxHz') ||
+        el.closest('[data-framer-name="Related Projects"]') ||
+        el.closest('[data-framer-name="ProjectGrid"]') ||
+        el.closest('.framer-1n36v9c') ||
+        el.closest('.framer-1gqtqx0') ||
+        el.closest('.framer-1hu0yoi') ||
+        el.closest('.framer-19wsexd') ||
+        el.closest('.framer-1fffd0e') ||
+        el.closest('.framer-fvykat') ||
+        el.closest('.framer-wbtrv3') ||
+        el.closest('.framer-sc384a') ||
+        el.closest('.framer-18zn2j') ||
+        el.closest('[data-framer-name="LogoPlain"]') ||
+        el.closest('[data-framer-name="Artstation"]') ||
+        el.closest('[data-framer-name="Linkedin-icon-free-png"]') ||
+        el.closest('[data-framer-name="Insta"]') ||
+        el.closest('[data-framer-name="X"]') ||
+        el.closest('[data-framer-name="Socials"]') ||
+        el.classList.contains('rm-logo-img') ||
+        el.closest('.framer-11ysz74-container') ||
+        el.closest('[data-framer-name="HeroVideo"]') ||
+        el.closest('.framer-1d3h6z2-container')
+      ) {
+        return true;
+      }
+      let cur = el.parentElement;
+      while (cur && cur !== document.body) {
+        const fn = cur.getAttribute('data-framer-name') || '';
+        if (/related/i.test(fn)) return true;
+        cur = cur.parentElement;
+      }
+      return false;
+    }
+
+    const galleryItems = [];
+
+    // 1. Gather all project artwork images
+    const allImgs = Array.from(document.querySelectorAll('img'));
+    allImgs.forEach(img => {
+      const src = img.getAttribute('src');
+      if (!src || isExcluded(img)) return;
+      if (
+        src.includes('logo.png') ||
+        src.includes('TtqHlZuNC4FIYJk4YJjNhpGZA.png') ||
+        src.includes('YTx4JRfElbalZ5l9xFN0LSlspI.png')
+      ) {
+        return;
+      }
+      if (!galleryItems.some(it => it.src === src)) {
+        galleryItems.push({
+          type: 'image',
+          src: src,
+          poster: src,
+          domElements: [img]
+        });
+      } else {
+        const existing = galleryItems.find(it => it.src === src);
+        if (existing) existing.domElements.push(img);
+      }
+      img.classList.add('rm-artwork-clickable');
+    });
+
+    // 2. Gather all project videos
+    const allVideos = Array.from(document.querySelectorAll('video'));
+    allVideos.forEach(vid => {
+      if (vid.id === 'rmGalleryMainVideo') return;
+      const src = vid.getAttribute('src') || (vid.querySelector('source') ? vid.querySelector('source').getAttribute('src') : null);
+      if (!src || isExcluded(vid)) return;
+
+      const poster = vid.getAttribute('poster') || '';
+      const elementsToListen = [vid];
+      if (vid.parentElement) {
+        elementsToListen.push(vid.parentElement);
+        vid.parentElement.style.cursor = 'zoom-in';
+      }
+
+      if (!galleryItems.some(it => it.src === src)) {
+        galleryItems.push({
+          type: 'video',
+          src: src,
+          poster: poster,
+          domElements: elementsToListen
+        });
+      } else {
+        const existing = galleryItems.find(it => it.src === src);
+        if (existing) {
+          elementsToListen.forEach(el => {
+            if (!existing.domElements.includes(el)) existing.domElements.push(el);
+          });
+        }
+      }
+      vid.classList.add('rm-artwork-clickable');
+      vid.style.cursor = 'zoom-in';
+    });
+
+    const total = galleryItems.length;
+    if (total === 0) return;
+
+    let currentIndex = 0;
+
+    function renderThumbs() {
+      thumbsStrip.innerHTML = '';
+      const offsets = total <= 7 
+        ? Array.from({ length: total }, (_, i) => i - currentIndex)
+        : [-3, -2, -1, 0, 1, 2, 3];
+
+      offsets.forEach(offset => {
+        const idx = (currentIndex + offset + total * 10) % total;
+        const item = galleryItems[idx];
+        const isActive = (idx === currentIndex);
+
+        const thumbDiv = document.createElement('div');
+        thumbDiv.className = 'rm-thumb-item' + (isActive ? ' rm-thumb-active' : '');
+        thumbDiv.dataset.index = idx;
+        thumbDiv.setAttribute('title', 'Item ' + (idx + 1));
+
+        if (item.type === 'video') {
+          thumbDiv.innerHTML = '<div class="rm-thumb-video-wrap">' +
+            '<video src="' + item.src + '#t=0.1" muted playsinline preload="metadata"></video>' +
+            '<div class="rm-thumb-play-badge"><span class="rm-thumb-play-icon">▶</span></div>' +
+            '</div>';
+        } else {
+          thumbDiv.innerHTML = '<img src="' + item.src + '" alt="Thumb ' + (idx + 1) + '" loading="lazy">';
+        }
+
+        thumbDiv.addEventListener('click', (e) => {
+          e.stopPropagation();
+          showItem(idx);
+        });
+
+        thumbsStrip.appendChild(thumbDiv);
+      });
+    }
+
+    function showItem(index) {
+      if (total === 0) return;
+      currentIndex = (index + total) % total;
+      const item = galleryItems[currentIndex];
+
+      if (item.type === 'video') {
+        // Strictly hide the image element
+        mainImg.classList.remove('rm-media-visible');
+        mainImg.classList.add('rm-media-hidden');
+        mainImg.removeAttribute('src');
+
+        // Show and play video element
+        mainVideo.classList.remove('rm-media-hidden');
+        mainVideo.classList.add('rm-media-visible');
+        mainVideo.src = item.src;
+        mainVideo.currentTime = 0;
+        mainVideo.play().catch(() => {});
+      } else {
+        // Strictly hide the video element
+        mainVideo.pause();
+        mainVideo.removeAttribute('src');
+        mainVideo.classList.remove('rm-media-visible');
+        mainVideo.classList.add('rm-media-hidden');
+
+        // Show image element
+        mainImg.classList.remove('rm-media-hidden');
+        mainImg.classList.add('rm-media-visible');
+        mainImg.style.opacity = '0.5';
+        mainImg.src = item.src;
+        mainImg.onload = () => {
+          mainImg.style.opacity = '1';
+        };
+      }
+
+      counter.textContent = (currentIndex + 1) + ' / ' + total;
+      renderThumbs();
+    }
+
+    function openGallery(index) {
+      showItem(index);
+      modal.classList.add('rm-active');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeGallery() {
+      mainVideo.pause();
+      mainVideo.removeAttribute('src');
+      mainVideo.classList.remove('rm-media-visible');
+      mainVideo.classList.add('rm-media-hidden');
+
+      mainImg.classList.remove('rm-media-visible');
+      mainImg.classList.add('rm-media-hidden');
+      mainImg.removeAttribute('src');
+
+      modal.classList.remove('rm-active');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    // Attach click events on artwork images and video cards
+    galleryItems.forEach((item, itemIdx) => {
+      item.domElements.forEach(el => {
+        el.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          openGallery(itemIdx);
+        });
+      });
+    });
+
+    btnPrev.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showItem(currentIndex - 1);
+    });
+
+    btnNext.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showItem(currentIndex + 1);
+    });
+
+    btnClose.addEventListener('click', closeGallery);
+    btnBackdrop.addEventListener('click', closeGallery);
+
+    window.addEventListener('keydown', (e) => {
+      if (!modal.classList.contains('rm-active')) return;
+      if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') {
+        showItem(currentIndex - 1);
+      } else if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') {
+        showItem(currentIndex + 1);
+      } else if (e.key === 'Escape') {
+        closeGallery();
+      }
+    });
+  });
+</script>
 
 </body>
