@@ -169,10 +169,14 @@
   .spec-list{ border-top:1px solid var(--hair); }
   .spec-row{
     display:grid; grid-template-columns:100px 1fr 1.3fr 90px; gap:24px; align-items:center;
-    padding:30px 0; border-bottom:1px solid var(--hair); transition:background .25s ease;
+    padding:30px 0; border-bottom:1px solid var(--hair); transition:background .25s ease, border-color .25s ease;
+    text-decoration:none; color:inherit; cursor:pointer;
   }
-  .spec-row:hover{ background:rgba(255,255,255,0.02); }
+  .spec-row:hover{ background:rgba(255,255,255,0.025); }
   .spec-row:hover .spec-name{ color:var(--red-soft); }
+  .spec-row:hover .spec-idx{ color:var(--red-soft); }
+  .spec-arrow-disc{ display:inline-block; font-size:13px; margin-left:4px; color:var(--red-soft); transition:transform .2s ease; }
+  .spec-row:hover .spec-arrow-disc{ transform:translate(2px, -2px); }
   @media (max-width:820px){
     .spec-row{ grid-template-columns:1fr; gap:8px; padding:24px 0;}
     .spec-code{ order:1; } .spec-name{ order:2; } .spec-desc{ order:3; } .spec-idx{ order:4; justify-self:flex-start;}
@@ -187,20 +191,19 @@
 
   /* ---------------- WORK ---------------- */
   .work{ padding:100px 0; }
-  .wall{ display:grid; grid-template-columns:repeat(6, 1fr); gap:20px; }
-  .wall-card{ display:block; text-decoration:none; color:inherit; position:relative; border-radius:4px; overflow:hidden; background:var(--panel); border:1px solid var(--hair); grid-column:span 3; aspect-ratio:4/3; transition:border-color .25s ease, transform .25s ease; cursor:pointer; }
+  .wall{ display:grid; grid-template-columns:repeat(2, 1fr); gap:24px; }
+  .wall-card{
+    display:block; text-decoration:none; color:inherit; position:relative;
+    border-radius:4px; overflow:hidden; background:var(--panel);
+    border:1px solid var(--hair); aspect-ratio:16/10;
+    transition:border-color .25s ease, transform .25s ease; cursor:pointer;
+  }
   .wall-card:hover{ border-color:var(--red); }
   .wall-arrow{ display:inline-block; font-family:var(--mono); font-size:14px; margin-left:6px; color:var(--red-soft); transition:transform .2s ease; }
   .wall-card:hover .wall-arrow{ transform:translate(3px, -3px); color:var(--red); }
-  .wall-card.wide{ grid-column:span 4; }
-  .wall-card.narrow{ grid-column:span 2; }
-  @media (max-width:900px){
-    .wall{ grid-template-columns:repeat(2,1fr); }
-    .wall-card, .wall-card.wide, .wall-card.narrow{ grid-column:span 2; aspect-ratio:4/3;}
-  }
-  @media (max-width:560px){
-    .wall{ grid-template-columns:1fr; }
-    .wall-card, .wall-card.wide, .wall-card.narrow{ grid-column:span 1; }
+  @media (max-width:820px){
+    .wall{ grid-template-columns:1fr; gap:16px; }
+    .wall-card{ aspect-ratio:16/10; }
   }
   .wall-card img{
     width:100%; height:100%; object-fit:cover;
@@ -414,36 +417,36 @@
       </div>
 
       <div class="spec-list reveal">
-        <div class="spec-row">
+        <a href="projects.html?filter=card-illustrations" class="spec-row" title="View Illustration projects">
           <div class="spec-code">ART_01</div>
           <div class="spec-name">Illustration</div>
           <div class="spec-desc">Key art, card art, and marketing illustration built to carry a whole title's tone in a single frame.</div>
-          <div class="spec-idx">2D</div>
-        </div>
-        <div class="spec-row">
+          <div class="spec-idx">2D <span class="spec-arrow-disc">↗</span></div>
+        </a>
+        <a href="projects.html?filter=vis-dev" class="spec-row" title="View Concept Art & Vis Dev projects">
           <div class="spec-code">ART_02</div>
           <div class="spec-name">Concept Art</div>
           <div class="spec-desc">Environments, characters, and props explored fast and wide before a single vertex gets modeled.</div>
-          <div class="spec-idx">2D</div>
-        </div>
-        <div class="spec-row">
+          <div class="spec-idx">2D <span class="spec-arrow-disc">↗</span></div>
+        </a>
+        <a href="projects.html?filter=3d-characters,vis-dev" class="spec-row" title="View 3D Characters, Props & Assets projects">
           <div class="spec-code">ART_03</div>
           <div class="spec-name">3D Characters &amp; Props</div>
           <div class="spec-desc">Game-ready and cinematic-grade models, sculpted, retopologized, and textured to your engine's budget.</div>
-          <div class="spec-idx">3D</div>
-        </div>
-        <div class="spec-row">
+          <div class="spec-idx">3D <span class="spec-arrow-disc">↗</span></div>
+        </a>
+        <a href="projects.html?filter=3d-characters" class="spec-row" title="View Rigging & 3D Character projects">
           <div class="spec-code">ART_04</div>
           <div class="spec-name">Rigging</div>
           <div class="spec-desc">Deformation-first character rigs built for animators, not just for turntables.</div>
-          <div class="spec-idx">3D</div>
-        </div>
-        <div class="spec-row">
+          <div class="spec-idx">3D <span class="spec-arrow-disc">↗</span></div>
+        </a>
+        <a href="projects.html?filter=3d-animation" class="spec-row" title="View 3D Animation projects">
           <div class="spec-code">ART_05</div>
           <div class="spec-name">Animation</div>
           <div class="spec-desc">Cinematics, trailers, and gameplay-ready animation cycles tuned for feel, not just accuracy.</div>
-          <div class="spec-idx">MO</div>
-        </div>
+          <div class="spec-idx">MO <span class="spec-arrow-disc">↗</span></div>
+        </a>
       </div>
     </div>
   </section>
@@ -463,11 +466,11 @@
       
 
       <div class="wall reveal" id="wallGrid">
-        <a href="neuroscape.html" class="wall-card wide" data-tags="card-illustrations" title="View Neuroscape project">
+        <a href="neuroscape.html" class="wall-card" data-tags="card-illustrations" title="View Neuroscape project">
           <img src="https://framerusercontent.com/images/Wvfjg72iPvPtYcjdWqBKOeyQIM.jpg" alt="Neuroscape card illustration artwork" loading="lazy">
           <div class="wall-overlay"><div class="wall-cat">Card Illustration</div><div class="wall-title">Neuroscape <span class="wall-arrow">↗</span></div></div>
         </a>
-        <a href="pacificrim.html" class="wall-card narrow" data-tags="3d-animation 3d-modeling" title="View Pacific Rim project">
+        <a href="pacificrim.html" class="wall-card" data-tags="3d-animation 3d-modeling" title="View Pacific Rim project">
           <img src="https://framerusercontent.com/images/pesjB6CzVNdVbylntayINBWkviE.jpg" alt="Pacific Rim 3D animation and modeling concept art" loading="lazy">
           <div class="wall-overlay"><div class="wall-cat">3D Animation · Modeling</div><div class="wall-title">Pacific Rim <span class="wall-arrow">↗</span></div></div>
         </a>
@@ -479,28 +482,15 @@
           <img src="https://framerusercontent.com/images/3mzagltZTFMfLGNRvaNwrnAXV4Y.jpg" alt="BlastFront motion trailer artwork" loading="lazy">
           <div class="wall-overlay"><div class="wall-cat">Motion Trailer</div><div class="wall-title">BlastFront <span class="wall-arrow">↗</span></div></div>
         </a>
-        <a href="vflect.html" class="wall-card wide" data-tags="character-customization 3d-characters 3d-animation" title="View VFlects project">
+        <a href="vflect.html" class="wall-card" data-tags="character-customization 3d-characters 3d-animation" title="View VFlects project">
           <img src="https://framerusercontent.com/images/IFOBvVu5d6ZHyuRl9Ou85R4vIVM.jpg" alt="VFlects character customization artwork" loading="lazy">
           <div class="wall-overlay"><div class="wall-cat">Character Customization</div><div class="wall-title">VFlects <span class="wall-arrow">↗</span></div></div>
         </a>
-        <a href="chap.html" class="wall-card narrow" data-tags="motion-trailer 3d-animation" title="View CHAP project">
+        <a href="chap.html" class="wall-card" data-tags="motion-trailer 3d-animation" title="View CHAP project">
           <img src="https://framerusercontent.com/images/q7OMNgatLPoVm8iVJzaMyys0FA.png" alt="CHAP cinematic trailer and visual development" loading="lazy">
           <div class="wall-overlay"><div class="wall-cat">Cinematic Trailer</div><div class="wall-title">CHAP <span class="wall-arrow">↗</span></div></div>
         </a>
-
-        <a href="3dcharacters.html" class="wall-card" title="View 3D Characters project" data-tags="3d-characters 3d-sculpt 3d-modeling">
-          <img src="https://framerusercontent.com/images/Wvfjg72iPvPtYcjdWqBKOeyQIM.jpg" alt="3D Characters project artwork" loading="lazy">
-          <div class="wall-overlay"><div class="wall-cat">3D Characters · Sculpt</div><div class="wall-title">3D Characters <span class="wall-arrow">↗</span></div></div>
-        </a>
-        <a href="3davatars.html" class="wall-card" title="View 3D Avatars project" data-tags="3d-characters character-customization 3d-sculpt">
-          <img src="https://framerusercontent.com/images/IFOBvVu5d6ZHyuRl9Ou85R4vIVM.jpg" alt="3D Avatars character customization" loading="lazy">
-          <div class="wall-overlay"><div class="wall-cat">Character Customization</div><div class="wall-title">3D Avatars <span class="wall-arrow">↗</span></div></div>
-        </a>
-        <a href="aloha.html" class="wall-card wide" title="View Aloha project" data-tags="motion-trailer 3d-animation">
-          <img src="https://framerusercontent.com/images/xzPkNE9tcbnUJbg6bL3Z5G5jePw.png" alt="Aloha 2D/3D Animation trailer" loading="lazy">
-          <div class="wall-overlay"><div class="wall-cat">Animation · Motion</div><div class="wall-title">Aloha <span class="wall-arrow">↗</span></div></div>
-        </a>
-        </div>
+      </div>
 
       <div class="work-more reveal">
         <a href="projects.html" class="btn btn-ghost">Check out all projects (Aloha, 3D Characters &amp; more) →</a>

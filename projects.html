@@ -545,24 +545,110 @@ of the industry.">
 
     console.log('Initialized project cards for filtering:', directCards.length);
 
+    // Alias mapping for query params
+    const aliasMap = {
+      'illustration': 'card-illustrations',
+      'illustrations': 'card-illustrations',
+      'card-illustration': 'card-illustrations',
+      'card-illustrations': 'card-illustrations',
+      'animation': '3d-animation',
+      'animations': '3d-animation',
+      '3d-animation': '3d-animation',
+      'concept-art': 'vis-dev',
+      'visdev': 'vis-dev',
+      'vis-dev': 'vis-dev',
+      '3d-assets': 'vis-dev',
+      '3d-chars': '3d-characters',
+      '3d-character': '3d-characters',
+      '3d-characters': '3d-characters',
+      '3d-characters-props': '3d-characters,vis-dev',
+      '3d-character-props': '3d-characters,vis-dev',
+      '3d-chars-props': '3d-characters,vis-dev'
+    };
+
+    function applyFilter(filterRaw, updateUrl = false) {
+      if (!filterRaw || filterRaw === 'all') {
+        filterPills.forEach(p => p.classList.remove('active'));
+        const allBtn = document.querySelector('.p-filter-pill[data-filter="all"]');
+        if (allBtn) allBtn.classList.add('active');
+
+        directCards.forEach(item => {
+          item.element.classList.remove('p-card-hidden');
+          item.element.style.display = '';
+        });
+
+        if (updateUrl && window.history.replaceState) {
+          const cleanUrl = window.location.pathname;
+          window.history.replaceState(null, '', cleanUrl);
+        }
+        return;
+      }
+
+      // Resolve aliases and split comma-separated filters
+      const rawTokens = filterRaw.split(',').map(s => s.trim().toLowerCase());
+      const resolvedTags = [];
+      rawTokens.forEach(token => {
+        const mapped = aliasMap[token] || token;
+        mapped.split(',').forEach(m => {
+          const t = m.trim().toLowerCase();
+          if (t && !resolvedTags.includes(t)) resolvedTags.push(t);
+        });
+      });
+
+      // Update pills active states
+      filterPills.forEach(p => p.classList.remove('active'));
+      let anyPillMatched = false;
+      resolvedTags.forEach(tag => {
+        const matchingPill = document.querySelector(`.p-filter-pill[data-filter="${tag}"]`);
+        if (matchingPill) {
+          matchingPill.classList.add('active');
+          anyPillMatched = true;
+        }
+      });
+      if (!anyPillMatched) {
+        const allBtn = document.querySelector('.p-filter-pill[data-filter="all"]');
+        if (allBtn) allBtn.classList.add('active');
+      }
+
+      // Show/hide matching project cards
+      directCards.forEach(item => {
+        const match = resolvedTags.some(tag => item.tags.includes(tag));
+        if (match) {
+          item.element.classList.remove('p-card-hidden');
+          item.element.style.display = '';
+        } else {
+          item.element.classList.add('p-card-hidden');
+          item.element.style.display = 'none';
+        }
+      });
+
+      if (updateUrl && window.history.replaceState) {
+        const newUrl = window.location.pathname + '?filter=' + encodeURIComponent(resolvedTags.join(','));
+        window.history.replaceState(null, '', newUrl);
+      }
+    }
+
+    // Attach click listener to each filter pill
     filterPills.forEach(pill => {
       pill.addEventListener('click', (e) => {
         e.preventDefault();
-        filterPills.forEach(p => p.classList.remove('active'));
-        pill.classList.add('active');
         const activeFilter = pill.getAttribute('data-filter');
-
-        directCards.forEach(item => {
-          if (activeFilter === 'all' || item.tags.includes(activeFilter)) {
-            item.element.classList.remove('p-card-hidden');
-            item.element.style.display = '';
-          } else {
-            item.element.classList.add('p-card-hidden');
-            item.element.style.display = 'none';
-          }
-        });
+        applyFilter(activeFilter, true);
       });
     });
+
+    // Handle incoming URL filter query on page load
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialFilter = urlParams.get('filter') || urlParams.get('tag') || urlParams.get('cat');
+    if (initialFilter) {
+      applyFilter(initialFilter, false);
+      setTimeout(() => {
+        const filterBar = document.querySelector('.p-filter-bar-wrap');
+        if (filterBar) {
+          filterBar.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 150);
+    }
   });
 </script>
 
