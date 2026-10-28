@@ -679,6 +679,175 @@
     }
 
   </style>
+<style>
+
+  /* Contact / Brief Form Section */
+  .rm-contact-section {
+    padding: 80px 0 120px !important;
+    background: #0a0a0a !important;
+    background-color: #0a0a0a !important;
+    position: relative !important;
+    z-index: 10 !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+  }
+  .rm-brief {
+    background: #121212 !important;
+    border: 1px solid #2a1414 !important;
+    border-radius: 8px !important;
+    padding: 64px !important;
+    display: grid !important;
+    grid-template-columns: 0.9fr 1.1fr !important;
+    gap: 56px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+  .rm-brief::before {
+    content: '' !important;
+    position: absolute !important;
+    top: -30% !important;
+    right: -15% !important;
+    width: 460px !important;
+    height: 460px !important;
+    border-radius: 50% !important;
+    background: radial-gradient(circle, rgba(255, 30, 30, 0.16), transparent 70%) !important;
+    pointer-events: none !important;
+  }
+  @media (max-width: 820px) {
+    .rm-brief {
+      grid-template-columns: 1fr !important;
+      padding: 36px 24px !important;
+    }
+  }
+  .rm-eyebrow {
+    font-family: 'Space Mono', monospace !important;
+    font-size: 11.5px !important;
+    letter-spacing: 0.16em !important;
+    text-transform: uppercase !important;
+    color: #ff5c4d !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    margin-bottom: 12px !important;
+  }
+  .rm-arrow-mark {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 20px !important;
+    height: 20px !important;
+    border: 1px solid #ff1e1e !important;
+    color: #ff1e1e !important;
+    font-size: 12px !important;
+  }
+  .rm-section-title {
+    font-family: 'Archivo Black', sans-serif !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    font-size: clamp(32px, 5vw, 52px) !important;
+    line-height: 0.95 !important;
+    letter-spacing: 0.005em !important;
+    margin: 14px 0 !important;
+    color: #ffffff !important;
+  }
+  .rm-brief-copy p {
+    color: #8a8580 !important;
+    font-size: 15px !important;
+    line-height: 1.7 !important;
+    margin-top: 18px !important;
+    max-width: 38ch !important;
+  }
+  .rm-brief-meta {
+    margin-top: 32px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    font-family: 'Space Mono', monospace !important;
+    font-size: 12.5px !important;
+    color: #8a8580 !important;
+  }
+  .rm-brief-meta a {
+    color: #efece4 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25) !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    width: fit-content !important;
+  }
+  .rm-brief-meta a:hover {
+    color: #ff5c4d !important;
+    border-color: #ff5c4d !important;
+  }
+  .rm-form {
+    position: relative !important;
+    z-index: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+  .rm-field-row {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 20px !important;
+  }
+  @media (max-width: 480px) {
+    .rm-field-row { grid-template-columns: 1fr !important; }
+  }
+  .rm-field {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+  .rm-field label {
+    font-family: 'Space Mono', monospace !important;
+    font-size: 10.5px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em !important;
+    color: #8a8580 !important;
+  }
+  .rm-field input, .rm-field textarea, .rm-field select {
+    background: #111111 !important;
+    border: 1px solid #2a1414 !important;
+    border-radius: 3px !important;
+    padding: 14px 16px !important;
+    color: #efece4 !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 14.5px !important;
+    outline: none !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+  }
+  .rm-field input:focus, .rm-field textarea:focus, .rm-field select:focus {
+    border-color: #ff5c4d !important;
+  }
+  .rm-submit-btn {
+    align-self: flex-start !important;
+    margin-top: 6px !important;
+    background: linear-gradient(100deg, #ff5c4d 0%, #ff1e1e 60%, #8c0f0f 100%) !important;
+    color: #0a0a0a !important;
+    border: none !important;
+    cursor: pointer !important;
+    font-family: 'Space Mono', monospace !important;
+    font-weight: 700 !important;
+    font-size: 12.5px !important;
+    letter-spacing: 0.04em !important;
+    text-transform: uppercase !important;
+    padding: 15px 30px !important;
+    border-radius: 3px !important;
+    transition: transform .2s ease, box-shadow .2s ease !important;
+  }
+  .rm-submit-btn:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 14px 34px -10px rgba(255, 30, 30, 0.5) !important;
+  }
+  .rm-wrap {
+    max-width: 1260px !important;
+    margin: 0 auto !important;
+    padding: 0 32px !important;
+    box-sizing: border-box !important;
+  }
+
+</style>
 </head>
 <body>
 
@@ -699,20 +868,10 @@
   </header>
 
   <main>
-    <!-- BlastFront-style Centered Full-Width Hero -->
+    <!-- BlastFront-style Centered Full-Width Hero (Image Only) -->
     <section class="blast-hero-section">
       <img src="fallentear.png" alt="Fallen Tear: The Ascension" class="blast-hero-bg" loading="eager">
       <div class="blast-hero-overlay"></div>
-      <div class="blast-hero-content">
-        <div class="blast-brand-lockup">
-          <h1 class="blast-project-title">Fallen Tear: The Ascension</h1>
-          <div class="blast-categories">
-            <span class="blast-cat-tag">2D Animation</span>
-            <span class="blast-cat-tag">Cinematic Cutscenes</span>
-            <span class="blast-cat-tag">Visual Effects</span>
-          </div>
-        </div>
-      </div>
     </section>
 
     <!-- BlastFront Content Layout: Left-Aligned Text Spanning to Match Video Width -->
@@ -935,21 +1094,49 @@
           </div>
         </section>
 
-        <!-- Brief / CTA Section -->
-        <section class="contact-cta">
-          <div class="brief-card">
-            <div>
-              <h2 class="brief-title">Have a Project in Mind?</h2>
-              <p class="brief-desc">
-                From hand-drawn 2D cutscenes and trailers to full 3D pipelines, concept art, rigging, and animation — our team delivers production-ready assets tailored to your game engine and creative vision.
-              </p>
+          <!-- SEND US THE BRIEF CONTACT SECTION -->
+  <section class="rm-contact-section" id="contact">
+    <div class="rm-wrap">
+      <div class="rm-brief">
+        <div class="rm-brief-copy">
+          <div class="rm-eyebrow"><span class="rm-arrow-mark">↙</span>New quest</div>
+          <h2 class="rm-section-title">Send Us<br>The Brief</h2>
+          <p>Tell us what you're building and where you're stuck — a single hero asset or a full production pipeline. We'll reply with next steps within one business day.</p>
+          <div class="rm-brief-meta">
+            <a href="https://www.linkedin.com/company/radmoonstudios" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <span>Outsourcing Art &amp; Game Studio</span>
+          </div>
+        </div>
+        <form class="rm-form" onsubmit="event.preventDefault(); this.querySelector('.rm-submit-btn').textContent='Sent ✓';">
+          <div class="rm-field-row">
+            <div class="rm-field">
+              <label for="c_name">Name</label>
+              <input id="c_name" type="text" placeholder="Your name" required>
             </div>
-            <div class="brief-actions">
-              <a href="index.html#contact" class="btn-main">Send Us The Brief →</a>
-              <a href="mailto:contact@radmoonstudios.com" class="btn-secondary">or email us directly: contact@radmoonstudios.com</a>
+            <div class="rm-field">
+              <label for="c_email">Email</label>
+              <input id="c_email" type="email" placeholder="you@studio.com" required>
             </div>
           </div>
-        </section>
+          <div class="rm-field">
+            <label for="c_project">Project type</label>
+            <select id="c_project">
+              <option>Concept Art</option>
+              <option>3D Characters / Props</option>
+              <option>Rigging</option>
+              <option>Animation</option>
+              <option>Full pipeline</option>
+            </select>
+          </div>
+          <div class="rm-field">
+            <label for="c_message">Tell us about it</label>
+            <textarea id="c_message" rows="4" placeholder="What are you building, and what's the timeline?" required></textarea>
+          </div>
+          <button type="submit" class="rm-submit-btn">▶ Submit Quest</button>
+        </form>
+      </div>
+    </div>
+  </section>
 
       </div>
   </main>
