@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="https://framerusercontent.com/images/TtqHlZuNC4FIYJk4YJjNhpGZA.png">
+  <title>Fallen Tear: The Ascension — RadMoon Studios</title>
+  <meta name="description" content="Fallen Tear: The Ascension — High-octane 2D character animation, cinematic cutscenes, and visual effects trailer sequences crafted by RadMoon Studios.">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&family=Poppins:ital,wght@0,400;0,600;1,400;1,600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --void: #0a0a0a;
+      --void-2: #111111;
+      --panel: #141416;
+      --panel-hover: #1b1b1e;
+      --hair: #262220;
+      --hair-red: #3d1414;
+      --ink: #efece4;
+      --dim: #8a8580;
+      --dim-light: #b5b0a8;
+      --red: #ff1e1e;
+      --red-soft: #ff5c4d;
+      --red-deep: #8c0f0f;
+      --display: 'Archivo Black', -apple-system, sans-serif;
+      --body: 'Inter', -apple-system, sans-serif;
+      --mono: 'Space Mono', monospace;
+      --grad: linear-gradient(100deg, var(--red-soft) 0%, var(--red) 60%, var(--red-deep) 100%);
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      background: var(--void);
+      color: var(--ink);
+      font-family: var(--body);
+      overflow-x: hidden;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: var(--red); color: var(--void); }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .wrap {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+    @media (max-width: 640px) {
+      .wrap { padding: 0 20px; }
+    }
+
+    /* Universal RadMoon Header */
+    .rm-global-header {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      width: 100% !important;
+      z-index: 9999999 !important;
+      background: rgba(10, 10, 10, 0.94) !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px) !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+      box-sizing: border-box !important;
+    }
+    .rm-nav-inner {
+      max-width: 1260px !important;
+      margin: 0 auto !important;
+      padding: 16px 32px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      box-sizing: border-box !important;
+    }
+    @media (max-width: 640px) {
+      .rm-nav-inner { padding: 14px 20px !important; }
+    }
+    .rm-brand {
+      display: flex !important;
+      align-items: center !important;
+      text-decoration: none !important;
+    }
+    .rm-logo-img {
+      height: 38px !important;
+      width: auto !important;
+      max-height: 40px !important;
+      display: block !important;
+      object-fit: contain !important;
+    }
+    .rm-navlinks {
+      display: flex !important;
+      gap: 36px !important;
+      align-items: center !important;
+    }
+    .rm-navlinks a {
+      font-family: var(--mono) !important;
+      font-size: 12px !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.08em !important;
+      text-transform: uppercase !important;
+      color: #8a8580 !important;
+      text-decoration: none !important;
+      transition: color 0.2s ease !important;
+    }
+    .rm-navlinks a:hover {
+      color: #ffffff !important;
+    }
+    .rm-navcta {
+      font-family: var(--mono) !important;
+      font-size: 11.5px !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.08em !important;
+      text-transform: uppercase !important;
+      color: #efece4 !important;
+      border: 1px solid rgba(255, 255, 255, 0.22) !important;
+      padding: 10px 18px !important;
+      border-radius: 4px !important;
+      transition: all 0.2s ease !important;
+      text-decoration: none !important;
+    }
+    .rm-navcta:hover {
+      border-color: #ff1e1e !important;
+      color: #ff1e1e !important;
+      box-shadow: 0 0 16px rgba(255, 30, 30, 0.35) !important;
+    }
+    @media (max-width: 860px) {
+      .rm-navlinks { display: none !important; }
+    }
+
+    /* BlastFront-style Centered Hero Banner */
+    .blast-hero-section {
+      position: relative;
+      width: 100vw;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      height: clamp(480px, 58vh, 660px);
+      background: #0a0a0a;
+      overflow: hidden;
+    }
+    @media (max-width: 768px) {
+      .blast-hero-section {
+        height: 380px;
+      }
+    }
+    .blast-hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      display: block;
+      filter: brightness(0.92) contrast(1.05);
+    }
+    /* Exact BlastFront gradient overlay: top dark, middle transparent, bottom dark fade */
+    .blast-hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(180deg, #0a0a0a 0%, rgba(10, 10, 10, 0) 51.5%, #0a0a0a 100%);
+      pointer-events: none;
+    }
+    .blast-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      height: 100%;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      box-sizing: border-box;
+    }
+    .blast-brand-lockup {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+    .blast-project-title {
+      font-family: var(--display);
+      font-size: clamp(34px, 5.5vw, 68px);
+      line-height: 1.05;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      color: #ffffff;
+      text-shadow: 0 4px 30px rgba(0, 0, 0, 0.95);
+      margin: 0;
+    }
+    .blast-categories {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 22px;
+    }
+    .blast-cat-tag {
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #ff5c4d;
+    }
+
+    /* BlastFront Narrative Text & Content Layout */
+    .blast-content-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+      box-sizing: border-box;
+    }
+    .project-narrative-wrap {
+      width: 100%;
+      padding: 55px 0 35px;
+      box-sizing: border-box;
+    }
+    .project-narrative-text {
+      font-family: 'Poppins', var(--body), sans-serif;
+      font-size: 14px;
+      line-height: 1.85;
+      text-align: left;
+      color: rgb(209, 190, 190);
+      margin: 0;
+      max-width: 100%;
+    }
+    .project-narrative-text em {
+      font-style: italic;
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    /* Individual Video Player Component (BlastFront style) */
+    .individual-player-card {
+      display: flex;
+      flex-direction: column;
+      background: #101012;
+      border: 1px solid #262220;
+      border-radius: 4px;
+      overflow: hidden;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .individual-player-card:hover {
+      border-color: rgba(255, 30, 30, 0.5);
+      box-shadow: 0 14px 40px -10px rgba(255, 30, 30, 0.2);
+    }
+    .individual-player-card.featured {
+      margin-bottom: 55px;
+      border-color: #2e2624;
+    }
+    .video-media-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #000;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .video-cover {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: 2;
+      transition: transform 0.4s ease, filter 0.3s ease;
+    }
+    .video-media-wrap:hover .video-cover {
+      transform: scale(1.02);
+      filter: brightness(1.05);
+    }
+    .blast-play-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 68px;
+      height: 48px;
+      padding: 0;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      z-index: 3;
+      transition: transform 0.2s ease;
+    }
+    .video-media-wrap:hover .blast-play-btn {
+      transform: translate(-50%, -50%) scale(1.12);
+    }
+    .blast-play-btn path.ytp-large-play-button-bg {
+      transition: fill 0.15s ease, fill-opacity 0.15s ease;
+    }
+    .video-media-wrap:hover .blast-play-btn path.ytp-large-play-button-bg {
+      fill: #ff0000;
+      fill-opacity: 1;
+    }
+    .video-iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: none;
+      z-index: 1;
+    }
+    .individual-player-card.is-playing .video-iframe {
+      display: block;
+      z-index: 4;
+    }
+    .individual-player-card.is-playing .video-cover,
+    .individual-player-card.is-playing .blast-play-btn {
+      display: none;
+    }
+    .video-info-bar {
+      padding: 18px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      background: #141416;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .video-cat-meta {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--red-soft);
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+    .video-title {
+      font-family: var(--display);
+      font-size: 17px;
+      text-transform: uppercase;
+      color: #efece4;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .individual-player-card.featured .video-title {
+      font-size: 20px;
+    }
+    .video-desc {
+      font-size: 13.5px;
+      color: var(--dim);
+      line-height: 1.5;
+    }
+    .video-yt-link {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: #8a8580;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: color 0.2s;
+      padding: 4px 8px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 3px;
+    }
+    .video-yt-link:hover {
+      color: var(--red-soft);
+      border-color: var(--red-soft);
+    }
+
+    /* Grid for other scenes */
+    .individual-scenes-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px 24px;
+      margin-bottom: 75px;
+    }
+    @media (max-width: 820px) {
+      .individual-scenes-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+    }
+    .individual-player-card.span-2 {
+      grid-column: 1 / -1;
+    }
+
+    /* All Scenes Grid */
+    .scenes-grid-section {
+      margin-bottom: 90px;
+    }
+    .section-head {
+      margin-bottom: 32px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .section-head h2 {
+      font-family: var(--display);
+      font-size: 28px;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+    .section-head p {
+      color: var(--dim);
+      font-size: 14px;
+      font-family: var(--mono);
+    }
+
+    .scenes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    @media (max-width: 980px) {
+      .scenes-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    }
+    @media (max-width: 600px) {
+      .scenes-grid { grid-template-columns: 1fr; gap: 16px; }
+    }
+
+    .scene-card {
+      background: var(--panel);
+      border: 1px solid var(--hair);
+      border-radius: 6px;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .scene-card:hover {
+      border-color: var(--red);
+      transform: translateY(-4px);
+      box-shadow: 0 14px 30px -10px rgba(255, 30, 30, 0.3);
+    }
+    .scene-card-thumb {
+      position: relative;
+      aspect-ratio: 16/9;
+      width: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+    .scene-card-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease, filter 0.3s ease;
+      filter: brightness(0.85) contrast(1.05);
+    }
+    .scene-card:hover .scene-card-thumb img {
+      transform: scale(1.05);
+      filter: brightness(1) contrast(1.05);
+    }
+    .scene-play-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: rgba(10, 10, 12, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 20px;
+      transition: all 0.25s ease;
+      pointer-events: none;
+    }
+    .scene-card:hover .scene-play-btn {
+      background: var(--red);
+      border-color: var(--red);
+      color: #0a0a0a;
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+    .scene-card-body {
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
+    }
+    .scene-card-meta {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--red-soft);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .scene-card-title {
+      font-family: var(--display);
+      font-size: 17px;
+      text-transform: uppercase;
+      color: var(--ink);
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+    .scene-card-desc {
+      font-size: 13px;
+      color: var(--dim);
+      line-height: 1.5;
+    }
+
+    /* Related Projects */
+    .related-section {
+      padding: 80px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 36px;
+    }
+    @media (max-width: 860px) {
+      .related-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 560px) {
+      .related-grid { grid-template-columns: 1fr; }
+    }
+    .related-card {
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--hair);
+      background: var(--panel);
+      aspect-ratio: 16/10;
+      position: relative;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .related-card:hover {
+      border-color: var(--red);
+      transform: translateY(-3px);
+    }
+    .related-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.75);
+      transition: transform 0.4s ease, filter 0.3s ease;
+    }
+    .related-card:hover img {
+      transform: scale(1.05);
+      filter: brightness(0.95);
+    }
+    .related-overlay {
+      position: absolute;
+      inset: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      background: linear-gradient(180deg, transparent 40%, rgba(5,6,10,0.92) 100%);
+    }
+    .related-cat {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--red-soft);
+      margin-bottom: 4px;
+    }
+    .related-title {
+      font-family: var(--display);
+      font-size: 18px;
+      text-transform: uppercase;
+    }
+
+    /* Brief / Contact CTA */
+    .contact-cta {
+      padding: 100px 0 120px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .brief-card {
+      background: var(--panel);
+      border: 1px solid var(--hair-red);
+      border-radius: 8px;
+      padding: 56px 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    @media (max-width: 820px) {
+      .brief-card { grid-template-columns: 1fr; padding: 36px 24px; gap: 32px; }
+    }
+    .brief-card::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -15%;
+      width: 440px;
+      height: 440px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,30,30,0.18), transparent 70%);
+      pointer-events: none;
+    }
+    .brief-title {
+      font-family: var(--display);
+      font-size: clamp(28px, 4vw, 42px);
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .brief-desc {
+      color: var(--dim);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+    .brief-actions {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 16px;
+      position: relative;
+      z-index: 2;
+    }
+    .btn-main {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--grad);
+      color: #0a0a0a;
+      font-family: var(--mono);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 15px 32px;
+      border-radius: 4px;
+      transition: all 0.25s ease;
+    }
+    .btn-main:hover {
+      box-shadow: 0 0 25px rgba(255, 30, 30, 0.6);
+      transform: translateY(-2px);
+    }
+    .btn-secondary {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--dim);
+      border-bottom: 1px solid var(--hair);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .btn-secondary:hover {
+      color: var(--ink);
+      border-color: var(--red);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 36px 0;
+      background: #08080a;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--dim);
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Universal RadMoon Header -->
+  <header class="rm-global-header">
+    <div class="rm-nav-inner">
+      <a href="index.html" class="rm-brand" aria-label="RadMoon Studios Home">
+        <img src="logo.png" alt="RadMoon Studios" class="rm-logo-img">
+      </a>
+      <nav class="rm-navlinks">
+        <a href="projects.html">Projects</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#about-us">About</a>
+        <a href="index.html#team">Team</a>
+      </nav>
+      <a href="index.html#contact" class="rm-navcta">Start a project</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- BlastFront-style Centered Full-Width Hero -->
+    <section class="blast-hero-section">
+      <img src="fallentear.png" alt="Fallen Tear: The Ascension" class="blast-hero-bg" loading="eager">
+      <div class="blast-hero-overlay"></div>
+      <div class="blast-hero-content">
+        <div class="blast-brand-lockup">
+          <h1 class="blast-project-title">Fallen Tear: The Ascension</h1>
+          <div class="blast-categories">
+            <span class="blast-cat-tag">2D Animation</span>
+            <span class="blast-cat-tag">Cinematic Cutscenes</span>
+            <span class="blast-cat-tag">Visual Effects</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BlastFront Content Layout: Left-Aligned Text Spanning to Match Video Width -->
+    <div class="blast-content-wrap">
+      <div class="project-narrative-wrap">
+        <p class="project-narrative-text">
+          Our team created high-impact cinematic 2D animation cutscenes and promotional sequences for <em>Fallen Tear: The Ascension</em>, capturing the project’s high-octane energy, magical particle VFX, and fantastical world. We’re proud of the work we produced and excited to share it with you.
+        </p>
+      </div>
+
+      <!-- Featured Cutscene Player (Scene 01) -->
+      <article class="individual-player-card featured" id="player-scene-01" data-video-id="h4-y09GClGE">
+        <div class="video-media-wrap">
+          <div class="video-cover" style="background-image: url('https://i.ytimg.com/vi/h4-y09GClGE/maxresdefault.jpg');"></div>
+          <button class="blast-play-btn" aria-label="Play Scene 01: 1 INTRO FINAL">
+            <svg height="100%" version="1.1" viewBox="0 0 68 48" width="100%">
+              <path class="ytp-large-play-button-bg" d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#212121" fill-opacity="0.8"></path>
+              <path d="M 45,24 27,14 27,34" fill="#fff"></path>
+            </svg>
+          </button>
+          <iframe class="video-iframe" 
+                  title="Scene 01: 1 INTRO FINAL" 
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allow="presentation; fullscreen; accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                  frameborder="0" 
+                  allowfullscreen>
+          </iframe>
+        </div>
+        <div class="video-info-bar">
+          <div>
+            <div class="video-cat-meta">Featured Cutscene // Scene 01</div>
+            <h2 class="video-title">1 INTRO FINAL</h2>
+            <p class="video-desc">Opening cinematic establishing the mystical world, character origins, and the unfolding narrative stakes.</p>
+          </div>
+          <a href="https://www.youtube.com/watch?v=h4-y09GClGE" target="_blank" rel="noopener noreferrer" class="video-yt-link">Watch on YouTube ↗</a>
+        </div>
+      </article>
+
+      <!-- Section Head for Remaining Cutscenes -->
+      <div class="section-head" style="margin-top: 10px; margin-bottom: 28px;">
+        <div>
+          <h2>Production Cutscenes</h2>
+          <p>// 6 PRODUCTION CUTSCENES &bull; 2D ANIMATION</p>
+        </div>
+      </div>
+
+      <!-- Individual Scene Players Grid -->
+      <div class="individual-scenes-grid">
+        <!-- Scene 02 -->
+        <article class="individual-player-card" id="player-scene-02" data-video-id="juD9UExsKTg">
+          <div class="video-media-wrap">
+            <div class="video-cover" style="background-image: url('https://i.ytimg.com/vi/juD9UExsKTg/maxresdefault.jpg');"></div>
+            <button class="blast-play-btn" aria-label="Play Scene 02: 2 GOD1 FINAL">
+              <svg height="100%" version="1.1" viewBox="0 0 68 48" width="100%">
+                <path class="ytp-large-play-button-bg" d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#212121" fill-opacity="0.8"></path>
+                <path d="M 45,24 27,14 27,34" fill="#fff"></path>
+              </svg>
+            </button>
+            <iframe class="video-iframe" 
+                    title="Scene 02: 2 GOD1 FINAL" 
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allow="presentation; fullscreen; accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                    frameborder="0" 
+                    allowfullscreen>
+            </iframe>
+          </div>
+          <div class="video-info-bar">
+            <div>
+              <div class="video-cat-meta">Scene 02 // Boss Encounter</div>
+              <h3 class="video-title">2 GOD1 FINAL</h3>
+              <p class="video-desc">Colossal divine entity showdown featuring multi-layered elemental particle animation and camera pans.</p>
+            </div>
+            <a href="https://www.youtube.com/watch?v=juD9UExsKTg" target="_blank" rel="noopener noreferrer" class="video-yt-link">Watch on YouTube ↗</a>
+          </div>
+        </article>
+
+        <!-- Scene 03 -->
+        <article class="individual-player-card" id="player-scene-03" data-video-id="SP0acoXoq5s">
+          <div class="video-media-wrap">
+            <div class="video-cover" style="background-image: url('https://i.ytimg.com/vi/SP0acoXoq5s/maxresdefault.jpg');"></div>
+            <button class="blast-play-btn" aria-label="Play Scene 03: SC3 FINAL">
+              <svg height="100%" version="1.1" viewBox="0 0 68 48" width="100%">
+                <path class="ytp-large-play-button-bg" d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#212121" fill-opacity="0.8"></path>
+                <path d="M 45,24 27,14 27,34" fill="#fff"></path>
+              </svg>
+            </button>
+            <iframe class="video-iframe" 
+                    title="Scene 03: SC3 FINAL" 
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allow="presentation; fullscreen; accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                    frameborder="0" 
+                    allowfullscreen>
+            </iframe>
+          </div>
+          <div class="video-info-bar">
+            <div>
+              <div class="video-cat-meta">Scene 03 // Combat Sequence</div>
+              <h3 class="video-title">SC3 FINAL</h3>
+              <p class="video-desc">Intense close-quarters combat choreography, showcasing weight, velocity, and fluid character silhouettes.</p>
+            </div>
+            <a href="https://www.youtube.com/watch?v=SP0acoXoq5s" target="_blank" rel="noopener noreferrer" class="video-yt-link">Watch on YouTube ↗</a>
+          </div>
+        </article>
+
+        <!-- Scene 04 -->
+        <article class="individual-player-card" id="player-scene-04" data-video-id="WFU8OiU24yw">
+          <div class="video-media-wrap">
+            <div class="video-cover" style="background-image: url('https://i.ytimg.com/vi/WFU8OiU24yw/maxresdefault.jpg');"></div>
+            <button class="blast-play-btn" aria-label="Play Scene 04: SC4 FINAL">
+              <svg height="100%" version="1.1" viewBox="0 0 68 48" width="100%">
+                <path class="ytp-large-play-button-bg" d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#212121" fill-opacity="0.8"></path>
+                <path d="M 45,24 27,14 27,34" fill="#fff"></path>
+              </svg>
+            </button>
+            <iframe class="video-iframe" 
+                    title="Scene 04: SC4 FINAL" 
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allow="presentation; fullscreen; accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                    frameborder="0" 
+                    allowfullscreen>
+            </iframe>
+          </div>
+          <div class="video-info-bar">
+            <div>
+              <div class="video-cat-meta">Scene 04 // Narrative Cutscene</div>
+              <h3 class="video-title">SC4 FINAL</h3>
+              <p class="video-desc">Dramatic story turning point with emotional character expressions, spell-casting VFX, and atmospheric depth.</p>
+            </div>
+            <a href="https://www.youtube.com/watch?v=WFU8OiU24yw" target="_blank" rel="noopener noreferrer" class="video-yt-link">Watch on YouTube ↗</a>
+          </div>
+        </article>
+
+        <!-- Scene 05 -->
+        <article class="individual-player-card" id="player-scene-05" data-video-id="bChptxiLKrg">
+          <div class="video-media-wrap">
+            <div class="video-cover" style="background-image: url('https://i.ytimg.com/vi/bChptxiLKrg/maxresdefault.jpg');"></div>
+            <button class="blast-play-btn" aria-label="Play Scene 05: SC5 FINAL">
+              <svg height="100%" version="1.1" viewBox="0 0 68 48" width="100%">
+                <path class="ytp-large-play-button-bg" d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#212121" fill-opacity="0.8"></path>
+                <path d="M 45,24 27,14 27,34" fill="#fff"></path>
+              </svg>
+            </button>
+            <iframe class="video-iframe" 
+                    title="Scene 05: SC5 FINAL" 
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allow="presentation; fullscreen; accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                    frameborder="0" 
+                    allowfullscreen>
+            </iframe>
+          </div>
+          <div class="video-info-bar">
+            <div>
+              <div class="video-cat-meta">Scene 05 // Climax Escalation</div>
+              <h3 class="video-title">SC5 FINAL</h3>
+              <p class="video-desc">High-tempo escalation leading into final confrontations, packed with rapid smearing and explosive impact frames.</p>
+            </div>
+            <a href="https://www.youtube.com/watch?v=bChptxiLKrg" target="_blank" rel="noopener noreferrer" class="video-yt-link">Watch on YouTube ↗</a>
+          </div>
+        </article>
+
+        <!-- Scene 06 (Full width span across 2 columns) -->
+        <article class="individual-player-card span-2" id="player-scene-06" data-video-id="dI-SDoObPaw">
+          <div class="video-media-wrap">
+            <div class="video-cover" style="background-image: url('https://i.ytimg.com/vi/dI-SDoObPaw/maxresdefault.jpg');"></div>
+            <button class="blast-play-btn" aria-label="Play Scene 06: SC6 FINAL">
+              <svg height="100%" version="1.1" viewBox="0 0 68 48" width="100%">
+                <path class="ytp-large-play-button-bg" d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#212121" fill-opacity="0.8"></path>
+                <path d="M 45,24 27,14 27,34" fill="#fff"></path>
+              </svg>
+            </button>
+            <iframe class="video-iframe" 
+                    title="Scene 06: SC6 FINAL" 
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allow="presentation; fullscreen; accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                    frameborder="0" 
+                    allowfullscreen>
+            </iframe>
+          </div>
+          <div class="video-info-bar">
+            <div>
+              <div class="video-cat-meta">Scene 06 // Climactic Finale</div>
+              <h3 class="video-title">SC6 FINAL</h3>
+              <p class="video-desc">Breathtaking finale animation sequence, bringing the arc to a powerful visual and narrative crescendo.</p>
+            </div>
+            <a href="https://www.youtube.com/watch?v=dI-SDoObPaw" target="_blank" rel="noopener noreferrer" class="video-yt-link">Watch on YouTube ↗</a>
+          </div>
+        </article>
+      </div>
+
+        <!-- Related Projects Section -->
+        <section class="related-section">
+          <div class="section-head">
+            <div>
+              <h2>Related Projects</h2>
+              <p>// EXPLORE MORE WORK FROM RADMOON STUDIOS</p>
+            </div>
+          </div>
+          <div class="related-grid">
+            <a href="chap.html" class="related-card">
+              <img src="https://framerusercontent.com/images/q7OMNgatLPoVm8iVJzaMyys0FA.png" alt="CHAP Trailer" loading="lazy">
+              <div class="related-overlay">
+                <div class="related-cat">Cinematic Trailer</div>
+                <div class="related-title">CHAP</div>
+              </div>
+            </a>
+            <a href="blastfront.html" class="related-card">
+              <img src="https://framerusercontent.com/images/3mzagltZTFMfLGNRvaNwrnAXV4Y.jpg" alt="BlastFront Trailer" loading="lazy">
+              <div class="related-overlay">
+                <div class="related-cat">Motion Trailer</div>
+                <div class="related-title">BlastFront</div>
+              </div>
+            </a>
+            <a href="neuroscape.html" class="related-card">
+              <img src="https://framerusercontent.com/images/Wvfjg72iPvPtYcjdWqBKOeyQIM.jpg" alt="Neuroscape" loading="lazy">
+              <div class="related-overlay">
+                <div class="related-cat">Card Illustration</div>
+                <div class="related-title">Neuroscape</div>
+              </div>
+            </a>
+          </div>
+        </section>
+
+        <!-- Brief / CTA Section -->
+        <section class="contact-cta">
+          <div class="brief-card">
+            <div>
+              <h2 class="brief-title">Have a Project in Mind?</h2>
+              <p class="brief-desc">
+                From hand-drawn 2D cutscenes and trailers to full 3D pipelines, concept art, rigging, and animation — our team delivers production-ready assets tailored to your game engine and creative vision.
+              </p>
+            </div>
+            <div class="brief-actions">
+              <a href="index.html#contact" class="btn-main">Send Us The Brief →</a>
+              <a href="mailto:contact@radmoonstudios.com" class="btn-secondary">or email us directly: contact@radmoonstudios.com</a>
+            </div>
+          </div>
+        </section>
+
+      </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="wrap footer-inner">
+      <div>&copy; 2026 RadMoon Studios. All rights reserved.</div>
+      <div>2D Animation &bull; 3D Modeling &bull; Rigging &bull; Visual Development</div>
+    </div>
+  </footer>
+
+  <!-- Interactive Video Players Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const playerCards = document.querySelectorAll('.individual-player-card');
+
+      playerCards.forEach(card => {
+        const mediaWrap = card.querySelector('.video-media-wrap');
+        const iframe = card.querySelector('.video-iframe');
+        const videoId = card.getAttribute('data-video-id');
+
+        if (!mediaWrap || !iframe || !videoId) return;
+
+        mediaWrap.addEventListener('click', () => {
+          // If already playing, keep playing
+          if (card.classList.contains('is-playing')) return;
+
+          // Stop all other playing videos to prevent audio overlapping
+          playerCards.forEach(otherCard => {
+            if (otherCard !== card && otherCard.classList.contains('is-playing')) {
+              otherCard.classList.remove('is-playing');
+              const otherIframe = otherCard.querySelector('.video-iframe');
+              if (otherIframe) {
+                otherIframe.src = '';
+              }
+            }
+          });
+
+          // Mount and play this video directly in place
+          iframe.src = 'https://www.youtube-nocookie.com/embed/' + videoId + '?autoplay=1&rel=0&modestbranding=1';
+          card.classList.add('is-playing');
+        });
+      });
+    });
+  </script>
+</body>
+</html>
