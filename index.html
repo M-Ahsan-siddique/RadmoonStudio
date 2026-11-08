@@ -724,6 +724,10 @@
 
       submitBtn.textContent = '✓ Quest Sent!';
       form.reset();
+      setTimeout(() => {
+        submitBtn.textContent = '▶ Submit Quest';
+        submitBtn.disabled = false;
+      }, 3000);
 
     } catch (err) {
       console.error('Firestore error:', err);
