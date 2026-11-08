@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" href="https://framerusercontent.com/images/TtqHlZuNC4FIYJk4YJjNhpGZA.png">
+<link rel="icon" type="image/png" href="assets/icons/favicon.png">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
 <title>RadMoon Studios — Outsourcing Art & Game Studio</title>
 <meta name="description" content="RadMoon Studios is an outsourcing art studio for film and games. Concept art, 3D modeling, character rigging, and animation, production-ready.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preload" href="assets/fonts/archivo-black-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/fonts.v1.css">
 <style>
   :root{
     --void:#0a0a0a;
@@ -381,7 +381,7 @@
 <header>
   <nav>
     <a href="index.html" class="brand" aria-label="RadMoon Studios Home">
-      <img src="logo.png" alt="RadMoon Studios" class="brand-logo">
+      <img src="assets/img/logo.webp" alt="RadMoon Studios" class="brand-logo">
     </a>
     <div class="navlinks">
       <a href="projects.html">Projects</a>
@@ -397,9 +397,8 @@
 
   <!-- HERO -->
   <section class="hero">
-    <video class="hero-video" autoplay muted loop playsinline poster="https://framerusercontent.com/images/Wvfjg72iPvPtYcjdWqBKOeyQIM.jpg" aria-hidden="true">
-      <source src="https://framerusercontent.com/assets/rfbbBgQCPu4uYAEBHHQChClwQ20.mp4" type="video/mp4">
-      <source src="HeroVideo_LevelsOpt.mp4" type="video/mp4">
+    <video class="hero-video" autoplay muted loop playsinline poster="assets/img/home/neuroscape.jpg" aria-hidden="true">
+      <source src="assets/video/home-hero.mp4" type="video/mp4">
     </video>
     <div class="hero-video-overlay" aria-hidden="true"></div>
     <div class="glow-a" aria-hidden="true"></div>
@@ -480,34 +479,34 @@
 
       <div class="wall reveal" id="wallGrid">
         <a href="fallentear.html" class="wall-card wall-card-featured" data-tags="motion-trailer 3d-animation" title="View Fallen Tear: The Ascension project">
-          <img src="fallentear.png" alt="Fallen Tear: The Ascension 2D animation and cinematic trailer" loading="lazy">
+          <img src="assets/img/related/fallentear.webp" alt="Fallen Tear: The Ascension 2D animation and cinematic trailer" loading="lazy">
           <div class="wall-overlay">
             <div class="wall-cat">2D Animation · Cinematic Cutscenes</div>
             <div class="wall-title">Fallen Tear: The Ascension <span class="wall-arrow">↗</span></div>
           </div>
         </a>
         <a href="neuroscape.html" class="wall-card" data-tags="card-illustrations" title="View Neuroscape project">
-          <img src="https://framerusercontent.com/images/Wvfjg72iPvPtYcjdWqBKOeyQIM.jpg" alt="Neuroscape card illustration artwork" loading="lazy">
+          <img src="assets/img/home/neuroscape.jpg" alt="Neuroscape card illustration artwork" loading="lazy">
           <div class="wall-overlay"><div class="wall-cat">Card Illustration</div><div class="wall-title">Neuroscape <span class="wall-arrow">↗</span></div></div>
         </a>
         <a href="pacificrim.html" class="wall-card" data-tags="3d-animation 3d-modeling" title="View Pacific Rim project">
-          <img src="https://framerusercontent.com/images/pesjB6CzVNdVbylntayINBWkviE.jpg" alt="Pacific Rim 3D animation and modeling concept art" loading="lazy">
+          <img src="assets/img/home/pacificrim.jpg" alt="Pacific Rim 3D animation and modeling concept art" loading="lazy">
           <div class="wall-overlay"><div class="wall-cat">3D Animation · Modeling</div><div class="wall-title">Pacific Rim <span class="wall-arrow">↗</span></div></div>
         </a>
         <a href="evermore.html" class="wall-card" data-tags="vis-dev 3d-modeling" title="View Evermore project">
-          <img src="https://framerusercontent.com/images/zF0nFDMxPZUHELOC3SnQlSer948.png" alt="Evermore visual development and 3D assets" loading="lazy">
+          <img src="assets/img/home/evermore.png" alt="Evermore visual development and 3D assets" loading="lazy">
           <div class="wall-overlay"><div class="wall-cat">Vis Dev · 3D Assets</div><div class="wall-title">Evermore <span class="wall-arrow">↗</span></div></div>
         </a>
         <a href="blastfront.html" class="wall-card" data-tags="motion-trailer" title="View BlastFront project">
-          <img src="https://framerusercontent.com/images/3mzagltZTFMfLGNRvaNwrnAXV4Y.jpg" alt="BlastFront motion trailer artwork" loading="lazy">
+          <img src="assets/img/home/blastfront.jpg" alt="BlastFront motion trailer artwork" loading="lazy">
           <div class="wall-overlay"><div class="wall-cat">Motion Trailer</div><div class="wall-title">BlastFront <span class="wall-arrow">↗</span></div></div>
         </a>
         <a href="vflect.html" class="wall-card" data-tags="character-customization 3d-characters 3d-animation" title="View VFlects project">
-          <img src="https://framerusercontent.com/images/IFOBvVu5d6ZHyuRl9Ou85R4vIVM.jpg" alt="VFlects character customization artwork" loading="lazy">
+          <img src="assets/img/home/vflect.jpg" alt="VFlects character customization artwork" loading="lazy">
           <div class="wall-overlay"><div class="wall-cat">Character Customization</div><div class="wall-title">VFlects <span class="wall-arrow">↗</span></div></div>
         </a>
         <a href="chap.html" class="wall-card" data-tags="motion-trailer 3d-animation" title="View CHAP project">
-          <img src="https://framerusercontent.com/images/q7OMNgatLPoVm8iVJzaMyys0FA.png" alt="CHAP cinematic trailer and visual development" loading="lazy">
+          <img src="assets/img/home/chap.png" alt="CHAP cinematic trailer and visual development" loading="lazy">
           <div class="wall-overlay"><div class="wall-cat">Cinematic Trailer</div><div class="wall-title">CHAP <span class="wall-arrow">↗</span></div></div>
         </a>
       </div>
@@ -522,7 +521,7 @@
   <section class="about" id="about-us">
     <div class="wrap about-grid">
       <div class="about-visual reveal">
-        <img src="https://framerusercontent.com/images/zdCurcVzLCpksKiKRap7bvgw.jpg" alt="RadMoon Studios character artwork" loading="lazy">
+        <img src="assets/img/home/about.jpg" alt="RadMoon Studios character artwork" loading="lazy">
       </div>
       <div class="about-copy reveal">
         <div class="eyebrow"><span class="arrow-mark">↙</span>About us</div>

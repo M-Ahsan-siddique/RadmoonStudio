@@ -1,0 +1,94 @@
+/* Projects listing page (projects.html). Values measured from the original at 1440 / 810 / 390px. */
+
+@font-face{font-family:'M Mabar Regular';font-style:normal;font-weight:400;font-display:swap;src:url(../fonts/m-mabar-regular.woff2) format('woff2')}
+
+.pl-main{background:#0a0a0a}
+.pl-hero .pj-hero-inner{padding:310px 24px 53px}
+.pl-title{margin:0;font:400 60px/72px 'M Mabar Regular','Poppins',sans-serif;color:#fff;white-space:pre-wrap}
+.pl-title span{color:#e25659}
+.pl-lede{font:400 16px/19.2px 'Poppins',sans-serif;color:#fff;white-space:pre-wrap}
+.pl-filter-spacer{padding-top:69px}
+
+/* ---------- card grid: 2 columns desktop, 1 column tablet, 300px cards on phones ---------- */
+.pj-grid{display:grid;grid-template-columns:repeat(2,584px);gap:5px;justify-content:center;margin-top:69px}
+.pj-grid > div{width:584px;height:300px;position:relative}
+.pj-card-phone-only{display:none}
+.pl-phone{display:none}
+.pj-card a{position:absolute;inset:0;display:block;overflow:hidden;color:inherit;text-decoration:none}
+.pj-card img{position:absolute;max-width:none;left:var(--l);top:var(--t);width:var(--w);height:var(--h);object-fit:var(--fit,cover)}
+.pj-card a::after{content:'';position:absolute;inset:-5px 0;background:linear-gradient(180.128deg,rgba(0,0,0,0) 0%,#000 100%);pointer-events:none}
+.pj-card-title,.pj-card-cat{position:absolute;left:25px;z-index:1;white-space:pre}
+.pj-card-title{bottom:36px;font:400 28.52px/34.224px 'M Mabar Regular','Poppins',sans-serif;text-transform:uppercase;color:#d1cbcb}
+.pj-card-cat{bottom:15px;font:400 17.82px/21.384px 'Poppins',sans-serif;color:#e25659}
+
+@media (max-width:1199px){
+  .pj-grid{grid-template-columns:584px}
+}
+@media (max-width:809px){
+  .pj-grid{grid-template-columns:100%;justify-items:center}
+  .pj-grid > div{width:300px;height:300px}
+  .pj-grid > .rm-fallentear-container{width:100%;height:240px}
+  .pj-card-phone-only{display:block}
+  .pl-phone{display:block}
+  .pl-desk{display:none}
+  .pj-card img{left:var(--l-p,var(--l));top:var(--t-p,var(--t));width:var(--w-p,var(--w));height:var(--h-p,var(--h));object-fit:var(--fit-p,var(--fit,cover))}
+  .pj-card-title,.pj-card-cat{left:5px;right:5px;text-align:center}
+  .pj-card-title{bottom:29px;color:#fff}
+  .pj-card-cat{bottom:11px;white-space:pre-wrap}
+}
+
+/* ---------- Fallen Tear card (from the original rm-global-injection-styles) ---------- */
+  .rm-fallentear-card {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    position: relative !important;
+    border-radius: 4px !important;
+    overflow: hidden !important;
+    border: 1px solid #262220 !important;
+    background: #141416 !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    transition: border-color 0.25s ease, transform 0.25s ease !important;
+  }
+  .rm-fallentear-card:hover {
+    border-color: #ff1e1e !important;
+  }
+  .rm-fallentear-card img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    transition: transform 0.6s cubic-bezier(.2,.7,.2,1), filter 0.5s ease !important;
+    filter: brightness(0.8) contrast(1.05) !important;
+  }
+  .rm-fallentear-card:hover img {
+    transform: scale(1.06) !important;
+    filter: brightness(0.95) contrast(1.05) !important;
+  }
+  .rm-fallentear-card .rm-ft-overlay {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 2 !important;
+    background: linear-gradient(180deg, transparent 45%, rgba(5,6,10,0.94) 100%) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important;
+    padding: 22px !important;
+    box-sizing: border-box !important;
+  }
+  .rm-fallentear-card .rm-ft-cat {
+    font-family: 'Space Mono', monospace !important;
+    font-size: 10px !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    color: #ff5c4d !important;
+    margin-bottom: 6px !important;
+  }
+  .rm-fallentear-card .rm-ft-title {
+    font-family: 'Archivo Black', sans-serif !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    font-size: 20px !important;
+    color: #efece4 !important;
+    letter-spacing: 0.01em !important;
+  }

@@ -1,0 +1,72 @@
+/* RadMoon Studios — shared project-page layout
+   (hero video/image + title + tags, description, YouTube facades, media rows, credit).
+   Measurements match the original layout at 1440 / 810 / 390px.
+   Breakpoints: desktop >= 1200px, tablet 810–1199px, phone <= 809px.
+   Per-item values (spacing, aspect ratio, columns) are set inline as CSS variables:
+   --mt / --mt-t / --mt-p   margin-top        (desktop / tablet / phone)
+   --ar / --ar-t / --ar-p   aspect-ratio of a media item
+   --cols / --cols-t / --cols-p, --gap / --gap-t / --gap-p   grid rows */
+
+@font-face{font-family:'Poppins';font-style:normal;font-weight:400;font-display:swap;src:url(../fonts/poppins-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Poppins';font-style:italic;font-weight:400;font-display:swap;src:url(../fonts/poppins-latin-400-italic.woff2) format('woff2')}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:600;font-display:swap;src:url(../fonts/poppins-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:700;font-display:swap;src:url(../fonts/poppins-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'Poppins';font-style:italic;font-weight:700;font-display:swap;src:url(../fonts/poppins-latin-700-italic.woff2) format('woff2')}
+@font-face{font-family:'Roboto Condensed';font-style:normal;font-weight:500;font-display:swap;src:url(../fonts/roboto-condensed-latin-500-normal.woff2) format('woff2')}
+
+.pj-main{background:#0d0e0e}
+
+/* ---------- Hero (height comes from its content: 380px top + title + tags + 83px bottom) ---------- */
+.pj-hero{position:relative;overflow:hidden;opacity:.96;background:#0a0a0a}
+.pj-hero-bg,.pj-hero-video{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover}
+.pj-hero-bg{object-position:var(--pos,50% 50%)}
+.pj-hero picture{position:absolute;inset:0}
+.pj-hero::after{content:'';position:absolute;inset:-2px;pointer-events:none;
+  background:linear-gradient(#0a0a0a 0%,rgba(10,10,10,0) 51.5%,#0a0a0a 100%)}
+.pj-hero-inner{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:380px 24px 83px}
+.pj-title{display:block;width:300px;height:auto;filter:drop-shadow(rgba(0,0,0,.25) 0 1px 1px)}
+.pj-title-text{font:600 43px/1.2 'Poppins',sans-serif;color:#fff;white-space:pre-wrap}
+.pj-tags{display:flex;flex-wrap:wrap;gap:8px 25px;margin:10px 0 0;padding:0;list-style:none;
+  font:500 14px/1.2 'Roboto Condensed',sans-serif;color:#f57173}
+.pj-tags-text{margin-top:10px;font:500 14px/1.2 'Roboto Condensed',sans-serif;color:#f57173;white-space:pre-wrap}
+
+/* ---------- Content ---------- */
+.pj-content{max-width:1200px;margin:0 auto;padding:95px 30px 30px}
+.pj-content.pj-flow{padding:0 30px var(--pb,30px)}
+.pj-text{font:400 14px/1.2 'Poppins',sans-serif;color:#d1bebe;white-space:pre-wrap}
+.pj-text strong{font-weight:700}
+.pj-credit{text-align:center;margin-top:30px}
+.pj-media{display:flex;flex-direction:column;gap:21px;margin-top:95px}
+.pj-media img{width:100%;height:auto}
+
+/* generic flow blocks */
+.pj-b{margin-top:var(--mt,0)}
+.pj-row{display:grid;grid-template-columns:var(--cols,1fr);gap:var(--gap,10px);align-items:start}
+.pj-m{display:block;width:100%;height:auto;aspect-ratio:var(--ar,auto);object-fit:cover;background:#0d0e0e}
+video.pj-m{background:#000}
+
+/* ---------- YouTube facade (thumbnail + play; iframe swapped in on click by site.js) ---------- */
+.yt-facade{position:relative;display:block;width:100%;aspect-ratio:var(--ar,1140/800);padding:0;border:0;
+  background:transparent;cursor:pointer;overflow:hidden}
+.yt-facade img{width:100%;height:100%;object-fit:cover}
+.yt-facade svg{position:absolute;left:50%;top:50%;width:68px;height:48px;transform:translate(-50%,-50%)}
+.yt-facade .yt-bg{fill:#212121;fill-opacity:.8;transition:fill .1s,fill-opacity .1s}
+.yt-facade:hover .yt-bg,.yt-facade:focus-visible .yt-bg{fill:#f00;fill-opacity:1}
+.yt-facade iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+@media (max-width:1199px){
+  .pj-content.pj-flow{padding-bottom:var(--pb-t,var(--pb,30px))}
+  .pj-b{margin-top:var(--mt-t,var(--mt,0))}
+  .pj-row{grid-template-columns:var(--cols-t,var(--cols,1fr));gap:var(--gap-t,var(--gap,10px))}
+  .pj-m{aspect-ratio:var(--ar-t,var(--ar,auto))}
+  .yt-facade{aspect-ratio:var(--ar-t,var(--ar,1140/800))}
+}
+@media (max-width:809px){
+  .pj-title-text{font-size:41px}
+  .pj-hero-bg{object-position:var(--pos-p,var(--pos,50% 50%))}
+  .pj-content.pj-flow{padding-bottom:var(--pb-p,var(--pb-t,var(--pb,30px)))}
+  .pj-b{margin-top:var(--mt-p,var(--mt-t,var(--mt,0)))}
+  .pj-row{grid-template-columns:var(--cols-p,var(--cols-t,var(--cols,1fr)));gap:var(--gap-p,var(--gap-t,var(--gap,10px)))}
+  .pj-m{aspect-ratio:var(--ar-p,var(--ar-t,var(--ar,auto)))}
+  .yt-facade{aspect-ratio:var(--ar-p,var(--ar-t,var(--ar,1140/800)))}
+}

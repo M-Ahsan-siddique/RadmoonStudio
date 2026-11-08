@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" href="https://framerusercontent.com/images/TtqHlZuNC4FIYJk4YJjNhpGZA.png">
+  <link rel="icon" type="image/png" href="assets/icons/favicon.png">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
   <title>Fallen Tear: The Ascension — RadMoon Studios</title>
   <meta name="description" content="Fallen Tear: The Ascension — High-octane 2D character animation, cinematic cutscenes, and visual effects trailer sequences crafted by RadMoon Studios.">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&family=Poppins:ital,wght@0,400;0,600;1,400;1,600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="preload" href="assets/fonts/archivo-black-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/fonts.v1.css">
   <style>
     :root {
       --void: #0a0a0a;
@@ -855,7 +855,7 @@
   <header class="rm-global-header">
     <div class="rm-nav-inner">
       <a href="index.html" class="rm-brand" aria-label="RadMoon Studios Home">
-        <img src="logo.png" alt="RadMoon Studios" class="rm-logo-img">
+        <img src="assets/img/logo.webp" width="163" height="80" alt="RadMoon Studios" class="rm-logo-img">
       </a>
       <nav class="rm-navlinks">
         <a href="projects.html">Projects</a>
@@ -870,7 +870,7 @@
   <main>
     <!-- BlastFront-style Centered Full-Width Hero (Image Only) -->
     <section class="blast-hero-section">
-      <img src="fallentear.png" alt="Fallen Tear: The Ascension" class="blast-hero-bg" loading="eager">
+      <img src="assets/img/fallentear/hero.webp" srcset="assets/img/fallentear/hero-960.webp 960w, assets/img/fallentear/hero.webp 1672w" sizes="100vw" width="1672" height="941" alt="Fallen Tear: The Ascension" class="blast-hero-bg" fetchpriority="high">
       <div class="blast-hero-overlay"></div>
     </section>
 
@@ -1071,21 +1071,21 @@
           </div>
           <div class="related-grid">
             <a href="chap.html" class="related-card">
-              <img src="https://framerusercontent.com/images/q7OMNgatLPoVm8iVJzaMyys0FA.png" alt="CHAP Trailer" loading="lazy">
+              <img src="assets/img/related/chap.png" alt="CHAP Trailer" loading="lazy">
               <div class="related-overlay">
                 <div class="related-cat">Cinematic Trailer</div>
                 <div class="related-title">CHAP</div>
               </div>
             </a>
             <a href="blastfront.html" class="related-card">
-              <img src="https://framerusercontent.com/images/3mzagltZTFMfLGNRvaNwrnAXV4Y.jpg" alt="BlastFront Trailer" loading="lazy">
+              <img src="assets/img/related/blastfront.jpg" alt="BlastFront Trailer" loading="lazy">
               <div class="related-overlay">
                 <div class="related-cat">Motion Trailer</div>
                 <div class="related-title">BlastFront</div>
               </div>
             </a>
             <a href="neuroscape.html" class="related-card">
-              <img src="https://framerusercontent.com/images/Wvfjg72iPvPtYcjdWqBKOeyQIM.jpg" alt="Neuroscape" loading="lazy">
+              <img src="assets/img/related/neuroscape.jpg" alt="Neuroscape" loading="lazy">
               <div class="related-overlay">
                 <div class="related-cat">Card Illustration</div>
                 <div class="related-title">Neuroscape</div>
