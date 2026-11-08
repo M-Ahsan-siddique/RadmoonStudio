@@ -606,7 +606,7 @@
             <span>Outsourcing Art &amp; Game Studio</span>
           </div>
         </div>
-        <form onsubmit="event.preventDefault(); this.querySelector('.submit-btn').textContent='Sent ✓';">
+        <form id="briefForm">
           <div class="field-row">
             <div class="field">
               <label for="name">Name</label>
@@ -677,6 +677,61 @@
   
   window.addEventListener('scroll', updateXP, { passive: true });
   updateXP();
+</script>
+
+<!-- Firebase Firestore Integration -->
+<script type="module">
+  import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
+  import { getFirestore, collection, addDoc, serverTimestamp }
+    from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDd6U2gjOGI7-HkokvMPT-xr9ZBLTJaDgM",
+    authDomain: "radmoon-ce459.firebaseapp.com",
+    projectId: "radmoon-ce459",
+    storageBucket: "radmoon-ce459.firebasestorage.app",
+    messagingSenderId: "101379633664",
+    appId: "1:101379633664:web:fbbe8623a18505f4535ee5"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db  = getFirestore(app);
+
+  const form      = document.getElementById('briefForm');
+  const submitBtn = form.querySelector('.submit-btn');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const name    = document.getElementById('name').value.trim();
+    const email   = document.getElementById('email').value.trim();
+    const project = document.getElementById('project').value;
+    const message = document.getElementById('message').value.trim();
+
+    if (!name || !email || !message) return;
+
+    submitBtn.textContent = 'Sending…';
+    submitBtn.disabled    = true;
+
+    try {
+      await addDoc(collection(db, 'briefs'), {
+        name,
+        email,
+        project,
+        message,
+        submittedAt: serverTimestamp()
+      });
+
+      submitBtn.textContent = '✓ Quest Sent!';
+      form.reset();
+
+    } catch (err) {
+      console.error('Firestore error:', err);
+      submitBtn.textContent = '▶ Submit Quest';
+      submitBtn.disabled    = false;
+      alert('Something went wrong. Please try again.');
+    }
+  });
 </script>
 
 </body>
