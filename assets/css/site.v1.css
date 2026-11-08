@@ -480,6 +480,15 @@ a{color:inherit}
     gap: 10px !important;
     text-transform: uppercase !important;
   }
+  /* Footer logo: same image and size as the header logo */
+  .rm-footer-logo {
+    height: 38px !important;
+    width: auto !important;
+    max-height: 40px !important;
+    display: block !important;
+    object-fit: contain !important;
+  }
+
   .rm-footer-dot {
     width: 8px !important;
     height: 8px !important;

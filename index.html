@@ -110,20 +110,26 @@
   @media (max-width:860px){ .navlinks{ display:none; } }
 
   /* ---------------- HERO ---------------- */
+  /* Hero: a tall scroll area with a sticky screen inside. On load only the video shows;
+     as you scroll, the text fades in, then the page continues as normal. */
   .hero{
-    min-height:100vh;
-    display:flex; flex-direction:column; justify-content:center;
-    position:relative; padding:150px 0 80px; overflow:hidden;
+    position:relative; height:190vh;
     background:var(--void);
+  }
+  .hero-sticky{
+    position:sticky; top:0; height:100vh; min-height:560px;
+    display:flex; flex-direction:column; justify-content:center;
+    padding:110px 0 60px; overflow:hidden;
   }
   .hero-video{
     position:absolute; inset:0; z-index:0;
     width:100%; height:100%;
     object-fit:cover;
-    opacity:0.55;
+    opacity:calc(0.85 - 0.3 * var(--reveal, 1));
   }
   .hero-video-overlay{
     position:absolute; inset:0; z-index:1; pointer-events:none;
+    opacity:var(--reveal, 1);
     background:
       linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.35) 35%, rgba(10,10,10,0.85) 100%),
       linear-gradient(90deg, rgba(10,10,10,0.75) 0%, rgba(10,10,10,0.15) 45%, rgba(10,10,10,0.55) 100%);
@@ -149,23 +155,34 @@
   .hero-frame{
     position:relative; z-index:2;
     padding:56px 44px;
+    transform:translateY(calc((1 - var(--reveal, 1)) * 80vh));
+    will-change:transform;
   }
+  .hero-scroll-cue{
+    position:absolute; z-index:2; left:50%; bottom:32px; transform:translateX(-50%);
+    font-family:var(--mono); font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink);
+    opacity:calc(1 - var(--reveal, 1) * 3); pointer-events:none;
+    display:flex; flex-direction:column; align-items:center; gap:8px;
+  }
+  .hero-scroll-cue span{ display:block; width:1px; height:28px; background:var(--red-soft); animation:cue 1.6s ease-in-out infinite; transform-origin:top; }
+  @keyframes cue{ 0%{ transform:scaleY(0); } 50%{ transform:scaleY(1); } 100%{ transform:scaleY(0); transform-origin:bottom; } }
+  @media (prefers-reduced-motion: reduce){ .hero{ height:auto; } .hero-sticky{ position:relative; min-height:100vh; } .hero-scroll-cue{ display:none; } }
   @media (max-width:640px){ .hero-frame{ padding:40px 20px; } }
 
-  .hero-tag{ margin-bottom:28px; }
+  .hero-tag{ margin-bottom:20px; }
   h1.hero-title{
     font-family:var(--display);
     font-weight:800;
     text-transform:uppercase;
-    font-size:clamp(48px, 10vw, 128px);
-    line-height:0.88;
+    font-size:clamp(34px, 6.4vw, 84px);
+    line-height:0.92;
     letter-spacing:0.005em;
     max-width:18ch;
   }
   .hero-sub{
-    margin-top:30px; max-width:520px; font-size:16.5px; line-height:1.7; color:var(--dim);
+    margin-top:22px; max-width:480px; font-size:15px; line-height:1.65; color:var(--dim);
   }
-  .hero-actions{ margin-top:40px; display:flex; gap:16px; flex-wrap:wrap; }
+  .hero-actions{ margin-top:30px; display:flex; gap:16px; flex-wrap:wrap; }
   .btn{
     font-family:var(--mono); font-size:12.5px; letter-spacing:0.04em; text-transform:uppercase;
     padding:15px 26px; border-radius:3px; display:inline-flex; align-items:center; gap:10px;
@@ -395,6 +412,7 @@
   .reveal{ opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s ease; }
   .reveal.in{ opacity:1; transform:translateY(0); }
 </style>
+<noscript><style>.hero{--reveal:1 !important}</style></noscript>
 </head>
 <body>
 
@@ -409,7 +427,7 @@
       <a href="projects.html">Projects</a>
       <a href="index.html#services">Services</a>
       <a href="index.html#about-us">About</a>
-      <a href="index.html#team">Team</a>
+      <!-- <a href="index.html#team">Team</a> -->
     </div>
     <a href="#contact" class="navcta">Start a project</a>
   </nav>
@@ -418,7 +436,8 @@
 <main id="top">
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero" id="hero" style="--reveal:0">
+    <div class="hero-sticky">
     <video class="hero-video" autoplay muted loop playsinline poster="assets/img/home/neuroscape.jpg" aria-hidden="true" fetchpriority="high">
       <source src="assets/video/home-hero.mp4" type="video/mp4">
     </video>
@@ -436,6 +455,8 @@
         </div>
 
         </div>
+    </div>
+    <div class="hero-scroll-cue" aria-hidden="true">Scroll<span></span></div>
     </div>
   </section>
 
@@ -557,7 +578,7 @@
     </div>
   </section>
 
-  <!-- TEAM -->
+  <!-- TEAM (hidden for now, remove the comment markers to show it again)
   <section class="team" id="team">
     <div class="wrap">
       <div class="section-head reveal">
@@ -613,6 +634,7 @@
       <p class="team-note reveal">// Placeholder crew — swap in real names, roles, and photos whenever you're ready.</p>
     </div>
   </section>
+  -->
 
   <!-- CONTACT -->
   <section class="contact" id="contact">
@@ -662,13 +684,13 @@
 
 <footer>
   <div class="wrap footer-inner">
-    <a href="index.html" class="brand"><span class="dot"></span>RADMOON</a>
+    <a href="index.html" class="brand" aria-label="RadMoon Studios Home"><img src="assets/img/logo.webp" width="163" height="80" alt="RadMoon Studios" class="brand-logo"></a>
     <div class="footer-links">
       <a href="#work">Work</a>
       <a href="projects.html">Projects</a>
       <a href="#services">Services</a>
       <a href="#about-us">About Us</a>
-      <a href="#team">Team</a>
+      <!-- <a href="#team">Team</a> -->
       <a href="#contact">Contact Us</a>
     </div>
     <div class="footer-social">
@@ -698,6 +720,19 @@
   
   window.addEventListener('scroll', updateXP, { passive: true });
   updateXP();
+
+  // Hero: only the video on load; the text fades in over the first ~45% of a screen of scrolling
+  const hero = document.getElementById('hero');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function updateHero(){
+    if(!hero) return;
+    if(reduceMotion){ hero.style.setProperty('--reveal', '1'); return; }
+    const p = Math.min(1, Math.max(0, window.scrollY / (window.innerHeight * 0.45)));
+    hero.style.setProperty('--reveal', p.toFixed(3));
+  }
+  window.addEventListener('scroll', updateHero, { passive: true });
+  window.addEventListener('resize', updateHero);
+  updateHero();
 </script>
 
 <!-- Firebase Firestore Integration -->
