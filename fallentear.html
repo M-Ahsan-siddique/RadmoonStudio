@@ -548,6 +548,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: var(--pos, center center);
       filter: brightness(0.75);
       transition: transform 0.4s ease, filter 0.3s ease;
     }
@@ -1078,7 +1079,7 @@
               </div>
             </a>
             <a href="blastfront.html" class="related-card">
-              <img src="assets/img/related/blastfront.jpg" alt="BlastFront Trailer" loading="lazy">
+              <img src="assets/img/related/blastfront.jpg" alt="BlastFront Trailer" style="--pos: 48.8% 8%;" loading="lazy">
               <div class="related-overlay">
                 <div class="related-cat">Motion Trailer</div>
                 <div class="related-title">BlastFront</div>
@@ -1107,7 +1108,7 @@
             <span>Outsourcing Art &amp; Game Studio</span>
           </div>
         </div>
-        <form class="rm-form" onsubmit="event.preventDefault(); this.querySelector('.rm-submit-btn').textContent='Sent ✓';">
+        <form class="rm-form">
           <div class="rm-field-row">
             <div class="rm-field">
               <label for="c_name">Name</label>

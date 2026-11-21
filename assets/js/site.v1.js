@@ -1,11 +1,52 @@
 /* RadMoon Studios — shared site behaviour. Loaded with `defer` on every page. */
 
 /* ---------- Contact form ("Send Us The Brief") ----------
-   Same behaviour as the original inline onsubmit: no network request, the button just confirms. */
+   Dispatches submissions asynchronously to FormSubmit.co without page reloads. */
+const OWNER_EMAIL = 'ahsansiddique989@gmail.com';
+
 document.querySelectorAll('.rm-form').forEach(form => {
-  form.addEventListener('submit', e => {
+  form.addEventListener('submit', async e => {
     e.preventDefault();
-    form.querySelector('.rm-submit-btn').textContent = 'Sent \u2713';
+    const btn = form.querySelector('.rm-submit-btn');
+    const name = form.querySelector('#c_name')?.value.trim() || '';
+    const email = form.querySelector('#c_email')?.value.trim() || '';
+    const project = form.querySelector('#c_project')?.value || '';
+    const message = form.querySelector('#c_message')?.value.trim() || '';
+
+    if (!name || !email || !message) return;
+
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+
+    try {
+      await fetch(`https://formsubmit.co/ajax/${OWNER_EMAIL}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          'Name': name,
+          'Client Email': email,
+          'Project Type': project,
+          'Message': message,
+          '_subject': `New RadMoon Quest Brief from ${name}`,
+          '_template': 'table'
+        })
+      });
+
+      btn.textContent = '✓ Quest Sent!';
+      form.reset();
+      setTimeout(() => {
+        btn.textContent = '▶ Submit Quest';
+        btn.disabled = false;
+      }, 3000);
+    } catch (err) {
+      console.error('Submission error:', err);
+      btn.textContent = '▶ Submit Quest';
+      btn.disabled = false;
+      alert('Something went wrong sending your brief. Please try again.');
+    }
   });
 });
 

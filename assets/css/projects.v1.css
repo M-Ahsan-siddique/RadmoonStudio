@@ -14,8 +14,9 @@
 .pj-grid > div{width:584px;height:300px;position:relative}
 .pj-card-phone-only{display:none}
 .pl-phone{display:none}
-.pj-card a{position:absolute;inset:0;display:block;overflow:hidden;color:inherit;text-decoration:none}
-.pj-card img{position:absolute;max-width:none;left:var(--l);top:var(--t);width:var(--w);height:var(--h);object-fit:var(--fit,cover)}
+.pj-card a{position:absolute;inset:0;display:block;overflow:hidden;color:inherit;text-decoration:none;border-radius:4px}
+.pj-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--pos, center center);transition:transform .6s cubic-bezier(.2,.7,.2,1), filter .5s ease}
+.pj-card:hover img{transform:scale(1.05);filter:brightness(1.02) contrast(1.05)}
 .pj-card a::after{content:'';position:absolute;inset:-5px 0;background:linear-gradient(180.128deg,rgba(0,0,0,0) 0%,#000 100%);pointer-events:none}
 .pj-card-title,.pj-card-cat{position:absolute;left:25px;z-index:1;white-space:pre}
 .pj-card-title{bottom:36px;font:400 28.52px/34.224px 'M Mabar Regular','Poppins',sans-serif;text-transform:uppercase;color:#d1cbcb}
@@ -31,7 +32,7 @@
   .pj-card-phone-only{display:block}
   .pl-phone{display:block}
   .pl-desk{display:none}
-  .pj-card img{left:var(--l-p,var(--l));top:var(--t-p,var(--t));width:var(--w-p,var(--w));height:var(--h-p,var(--h));object-fit:var(--fit-p,var(--fit,cover))}
+  .pj-card img{object-position:var(--pos-p,var(--pos,center center))}
   .pj-card-title,.pj-card-cat{left:5px;right:5px;text-align:center}
   .pj-card-title{bottom:29px;color:#fff}
   .pj-card-cat{bottom:11px;white-space:pre-wrap}

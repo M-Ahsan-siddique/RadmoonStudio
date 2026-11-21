@@ -259,6 +259,7 @@
   }
   .wall-card img{
     width:100%; height:100%; object-fit:cover;
+    object-position:var(--pos, center center);
     transition:transform .6s cubic-bezier(.2,.7,.2,1), filter .5s ease;
     filter:grayscale(0.25) brightness(0.72) contrast(1.08);
   }
@@ -533,7 +534,7 @@
           <div class="wall-overlay"><div class="wall-cat">Card Illustration</div><div class="wall-title">Neuroscape <span class="wall-arrow">↗</span></div></div>
         </a>
         <a href="pacificrim.html" class="wall-card" data-tags="3d-animation 3d-modeling" title="View Pacific Rim project">
-          <img src="assets/img/home/pacificrim.jpg" alt="Pacific Rim 3D animation and modeling concept art" loading="lazy">
+          <img src="assets/img/home/pacificrim.jpg" alt="Pacific Rim 3D animation and modeling concept art" style="--pos: center 20%;" loading="lazy">
           <div class="wall-overlay"><div class="wall-cat">3D Animation · Modeling</div><div class="wall-title">Pacific Rim <span class="wall-arrow">↗</span></div></div>
         </a>
         <a href="evermore.html" class="wall-card" data-tags="vis-dev 3d-modeling" title="View Evermore project">
@@ -541,7 +542,7 @@
           <div class="wall-overlay"><div class="wall-cat">Vis Dev · 3D Assets</div><div class="wall-title">Evermore <span class="wall-arrow">↗</span></div></div>
         </a>
         <a href="blastfront.html" class="wall-card" data-tags="motion-trailer" title="View BlastFront project">
-          <img src="assets/img/home/blastfront.jpg" alt="BlastFront motion trailer artwork" loading="lazy">
+          <img src="assets/img/home/blastfront.jpg" alt="BlastFront motion trailer artwork" style="--pos: 48.8% 8%;" loading="lazy">
           <div class="wall-overlay"><div class="wall-cat">Motion Trailer</div><div class="wall-title">BlastFront <span class="wall-arrow">↗</span></div></div>
         </a>
         <a href="vflect.html" class="wall-card" data-tags="character-customization 3d-characters 3d-animation" title="View VFlects project">
@@ -753,6 +754,7 @@
   const app = initializeApp(firebaseConfig);
   const db  = getFirestore(app);
 
+  const OWNER_EMAIL = 'ahsansiddique989@gmail.com';
   const form      = document.getElementById('briefForm');
   const submitBtn = form.querySelector('.submit-btn');
 
@@ -770,13 +772,33 @@
     submitBtn.disabled    = true;
 
     try {
-      await addDoc(collection(db, 'briefs'), {
+      // 1. Send submission via FormSubmit to owner email
+      const emailPromise = fetch(`https://formsubmit.co/ajax/${OWNER_EMAIL}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          'Name': name,
+          'Client Email': email,
+          'Project Type': project,
+          'Message': message,
+          '_subject': `New RadMoon Quest Brief from ${name}`,
+          '_template': 'table'
+        })
+      });
+
+      // 2. Also log to Firestore database
+      const firestorePromise = addDoc(collection(db, 'briefs'), {
         name,
         email,
         project,
         message,
         submittedAt: serverTimestamp()
       });
+
+      await Promise.allSettled([emailPromise, firestorePromise]);
 
       submitBtn.textContent = '✓ Quest Sent!';
       form.reset();
@@ -786,7 +808,7 @@
       }, 3000);
 
     } catch (err) {
-      console.error('Firestore error:', err);
+      console.error('Submission error:', err);
       submitBtn.textContent = '▶ Submit Quest';
       submitBtn.disabled    = false;
       alert('Something went wrong. Please try again.');
