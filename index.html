@@ -784,9 +784,10 @@
           'Project Type': project,
           'Message': message,
           '_subject': `New RadMoon Quest Brief from ${name}`,
-          '_template': 'table'
+          '_template': 'table',
+          '_captcha': 'false'
         })
-      });
+      }).then(r => r.json().catch(() => null));
 
       // 2. Also log to Firestore database
       const firestorePromise = addDoc(collection(db, 'briefs'), {
@@ -797,7 +798,19 @@
         submittedAt: serverTimestamp()
       });
 
-      await Promise.allSettled([emailPromise, firestorePromise]);
+      const [emailResult, firestoreResult] = await Promise.allSettled([emailPromise, firestorePromise]);
+
+      if (emailResult.status === 'fulfilled' && emailResult.value) {
+        const data = emailResult.value;
+        if (data.success === 'false' || data.success === false) {
+          console.warn('FormSubmit notice:', data.message);
+          if (data.message && data.message.includes('Activation')) {
+            alert("Action Required: FormSubmit has sent a one-time activation email to " + OWNER_EMAIL + ".\n\nPlease check your inbox and Spam/Junk folder and click 'Activate Form' to start receiving submissions!");
+          } else if (data.message && data.message.includes('web server')) {
+            alert("Notice: FormSubmit will not send emails when opening pages directly as local file:/// files.\n\nPlease test through a web server (e.g. localhost) or on your live deployed website.");
+          }
+        }
+      }
 
       submitBtn.textContent = '✓ Quest Sent!';
       form.reset();

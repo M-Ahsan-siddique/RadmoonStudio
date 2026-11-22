@@ -19,7 +19,7 @@ document.querySelectorAll('.rm-form').forEach(form => {
     btn.disabled = true;
 
     try {
-      await fetch(`https://formsubmit.co/ajax/${OWNER_EMAIL}`, {
+      const res = await fetch(`https://formsubmit.co/ajax/${OWNER_EMAIL}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -31,9 +31,20 @@ document.querySelectorAll('.rm-form').forEach(form => {
           'Project Type': project,
           'Message': message,
           '_subject': `New RadMoon Quest Brief from ${name}`,
-          '_template': 'table'
+          '_template': 'table',
+          '_captcha': 'false'
         })
       });
+
+      const data = await res.json().catch(() => null);
+      if (data && (data.success === 'false' || data.success === false)) {
+        console.warn('FormSubmit notice:', data.message);
+        if (data.message && data.message.includes('Activation')) {
+          alert("Action Required: FormSubmit has sent a one-time activation email to " + OWNER_EMAIL + ".\n\nPlease check your inbox and Spam/Junk folder and click 'Activate Form' to start receiving submissions!");
+        } else if (data.message && data.message.includes('web server')) {
+          alert("Notice: FormSubmit will not send emails when opening pages directly as local file:/// files.\n\nPlease test through a web server (e.g. localhost) or on your live deployed website.");
+        }
+      }
 
       btn.textContent = '✓ Quest Sent!';
       form.reset();
