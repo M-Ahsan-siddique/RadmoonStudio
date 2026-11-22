@@ -238,8 +238,7 @@
     transition:border-color .25s ease, transform .25s ease; cursor:pointer;
   }
   .wall-card:hover{ border-color:var(--red); }
-  .wall-arrow{ display:inline-block; font-family:var(--mono); font-size:14px; margin-left:6px; color:var(--red-soft); transition:transform .2s ease; }
-  .wall-card:hover .wall-arrow{ transform:translate(3px, -3px); color:var(--red); }
+  .wall-arrow{ display:none; }
   .wall-card.wall-card-featured{
     grid-column: 1 / -1;
     aspect-ratio: 16/9;
@@ -523,35 +522,35 @@
 
       <div class="wall reveal" id="wallGrid">
         <a href="fallentear.html" class="wall-card wall-card-featured" data-tags="motion-trailer 3d-animation" title="View Fallen Tear: The Ascension project">
-          <img src="assets/img/related/fallentear.webp" alt="Fallen Tear: The Ascension 2D animation and cinematic trailer" loading="lazy">
+          <img src="assets/img/related/fallentear.webp" alt="Fallen Tear: The Ascension 2D animation and cinematic trailer" loading="lazy" decoding="async">
           <div class="wall-overlay">
             <div class="wall-cat">2D Animation · Cinematic Cutscenes</div>
-            <div class="wall-title">Fallen Tear: The Ascension <span class="wall-arrow">↗</span></div>
+            <div class="wall-title">Fallen Tear: The Ascension</div>
           </div>
         </a>
         <a href="neuroscape.html" class="wall-card" data-tags="card-illustrations" title="View Neuroscape project">
-          <img src="assets/img/home/neuroscape.jpg" alt="Neuroscape card illustration artwork" loading="lazy">
-          <div class="wall-overlay"><div class="wall-cat">Card Illustration</div><div class="wall-title">Neuroscape <span class="wall-arrow">↗</span></div></div>
+          <img src="assets/img/projects/neuroscape.webp" srcset="assets/img/projects/neuroscape-sm.webp 600w, assets/img/projects/neuroscape.webp 835w" sizes="(min-width: 810px) 900px, 520px" width="835" height="621" alt="Neuroscape card illustration artwork" loading="lazy" decoding="async">
+          <div class="wall-overlay"><div class="wall-cat">Card Illustration</div><div class="wall-title">Neuroscape</div></div>
         </a>
         <a href="pacificrim.html" class="wall-card" data-tags="3d-animation 3d-modeling" title="View Pacific Rim project">
-          <img src="assets/img/home/pacificrim.jpg" alt="Pacific Rim 3D animation and modeling concept art" style="--pos: center 20%;" loading="lazy">
-          <div class="wall-overlay"><div class="wall-cat">3D Animation · Modeling</div><div class="wall-title">Pacific Rim <span class="wall-arrow">↗</span></div></div>
+          <img src="assets/img/projects/pacificrim.webp" srcset="assets/img/projects/pacificrim-sm.webp 600w, assets/img/projects/pacificrim.webp 1200w" sizes="(min-width: 810px) 900px, 520px" width="1645" height="996" alt="Pacific Rim 3D animation and modeling concept art" loading="lazy" decoding="async">
+          <div class="wall-overlay"><div class="wall-cat">3D Animation · Modeling</div><div class="wall-title">Pacific Rim</div></div>
         </a>
         <a href="evermore.html" class="wall-card" data-tags="vis-dev 3d-modeling" title="View Evermore project">
-          <img src="assets/img/home/evermore.png" alt="Evermore visual development and 3D assets" loading="lazy">
-          <div class="wall-overlay"><div class="wall-cat">Vis Dev · 3D Assets</div><div class="wall-title">Evermore <span class="wall-arrow">↗</span></div></div>
+          <img src="assets/img/projects/evermore.webp" srcset="assets/img/projects/evermore-sm.webp 600w, assets/img/projects/evermore.webp 1200w" sizes="(min-width: 810px) 900px, 520px" width="1744" height="1244" alt="Evermore visual development and 3D assets" loading="lazy" decoding="async">
+          <div class="wall-overlay"><div class="wall-cat">Vis Dev · 3D Assets</div><div class="wall-title">Evermore</div></div>
         </a>
         <a href="blastfront.html" class="wall-card" data-tags="motion-trailer" title="View BlastFront project">
-          <img src="assets/img/home/blastfront.jpg" alt="BlastFront motion trailer artwork" style="--pos: 48.8% 8%;" loading="lazy">
-          <div class="wall-overlay"><div class="wall-cat">Motion Trailer</div><div class="wall-title">BlastFront <span class="wall-arrow">↗</span></div></div>
+          <img src="assets/img/projects/blastfront.webp" srcset="assets/img/projects/blastfront-sm.webp 600w, assets/img/projects/blastfront.webp 1200w" sizes="(min-width: 810px) 900px, 520px" width="1744" height="1244" alt="BlastFront motion trailer artwork" loading="lazy" decoding="async">
+          <div class="wall-overlay"><div class="wall-cat">Motion Trailer</div><div class="wall-title">BlastFront</div></div>
         </a>
         <a href="vflect.html" class="wall-card" data-tags="character-customization 3d-characters 3d-animation" title="View VFlects project">
-          <img src="assets/img/home/vflect.jpg" alt="VFlects character customization artwork" loading="lazy">
-          <div class="wall-overlay"><div class="wall-cat">Character Customization</div><div class="wall-title">VFlects <span class="wall-arrow">↗</span></div></div>
+          <img src="assets/img/projects/vflect.webp" srcset="assets/img/projects/vflect-sm.webp 600w, assets/img/projects/vflect.webp 1200w" sizes="(min-width: 810px) 900px, 520px" width="2153" height="2148" alt="VFlects character customization artwork" style="--pos: center 25%;" loading="lazy" decoding="async">
+          <div class="wall-overlay"><div class="wall-cat">Character Customization</div><div class="wall-title">VFlects</div></div>
         </a>
         <a href="chap.html" class="wall-card" data-tags="motion-trailer 3d-animation" title="View CHAP project">
-          <img src="assets/img/home/chap.png" alt="CHAP cinematic trailer and visual development" loading="lazy">
-          <div class="wall-overlay"><div class="wall-cat">Cinematic Trailer</div><div class="wall-title">CHAP <span class="wall-arrow">↗</span></div></div>
+          <img src="assets/img/projects/chap.webp" srcset="assets/img/projects/chap-sm.webp 600w, assets/img/projects/chap.webp 1200w" sizes="(min-width: 810px) 900px, 520px" width="1920" height="1080" alt="CHAP cinematic trailer and visual development" loading="lazy" decoding="async">
+          <div class="wall-overlay"><div class="wall-cat">Cinematic Trailer</div><div class="wall-title">CHAP</div></div>
         </a>
       </div>
 
